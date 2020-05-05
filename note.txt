@@ -1,0 +1,61 @@
+Artisan
+    php artisan serve
+
+
+Blade syntax
+    {{ $var }} - wyświetl zmienna przekazaną do widoku
+-------------------------------------   
+    instrukcje warunkowe:
+        @if($var > 10)
+         // some code
+        @endif
+    
+-----------------------------------------
+    if...else if....else
+
+    @if($var > 10)
+    
+         // some code
+    @elseif($var < 10)
+        //some code
+    @else
+        //some code
+    @endif
+----------------------------------------------   
+unless (reverse IF)
+    @unless ($var = 2)
+     //some code
+    @endunless
+
+--------------------------------
+regularne php w Blade
+
+    @php
+
+    //some code
+
+
+    @endphp
+
+--------------------
+
+pętle w Blade
+
+@for($i = 1; $i < 10; $i++)
+
+    /some code
+@endfor
+
+
+-----------------------
+
+foreach
+
+@foreach(@arr as $element)
+    //some code
+    //jest zmienna $loop zawierająca info o pętli
+    //$loop -> index zawiera iterator 
+@endforeach
+
+----------------------------
+
