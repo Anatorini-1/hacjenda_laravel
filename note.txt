@@ -1,61 +1,95 @@
 Artisan
     php artisan serve
+    php artisan make:controller NameController
+    //kontrolery są tworzone w /app/http/controllers
+    Route::get('/home', 'HomeController@index');
 
 
 Blade syntax
-    {{ $var }} - wyświetl zmienna przekazaną do widoku
--------------------------------------   
-    instrukcje warunkowe:
+        {{ $var }} - wyświetl zmienna przekazaną do widoku
+    -------------------------------------   
+        instrukcje warunkowe:
+            @if($var > 10)
+            // some code
+            @endif
+        
+    -----------------------------------------
+        if...else if....else
+
         @if($var > 10)
-         // some code
+        
+            // some code
+        @elseif($var < 10)
+            //some code
+        @else
+            //some code
         @endif
-    
------------------------------------------
-    if...else if....else
-
-    @if($var > 10)
-    
-         // some code
-    @elseif($var < 10)
+    ----------------------------------------------   
+    unless (reverse IF)
+        @unless ($var = 2)
         //some code
-    @else
+        @endunless
+
+    --------------------------------
+    regularne php w Blade
+
+        @php
+
         //some code
-    @endif
-----------------------------------------------   
-unless (reverse IF)
-    @unless ($var = 2)
-     //some code
-    @endunless
-
---------------------------------
-regularne php w Blade
-
-    @php
-
-    //some code
 
 
-    @endphp
+        @endphp
 
---------------------
+    --------------------
 
-pętle w Blade
+    pętle w Blade
 
-@for($i = 1; $i < 10; $i++)
+    @for($i = 1; $i < 10; $i++)
 
-    /some code
-@endfor
+        /some code
+    @endfor
 
 
------------------------
+    -----------------------
 
-foreach
+    foreach
 
-@foreach(@arr as $element)
-    //some code
-    //jest zmienna $loop zawierająca info o pętli
-    //$loop -> index zawiera iterator 
-@endforeach
+    @foreach(@arr as $element)
+        //some code
+        //jest zmienna $loop zawierająca info o pętli
+        //$loop -> index zawiera iterator 
+    @endforeach
 
-----------------------------
+    ----------------------------
+
+    template
+
+        @extends('layouts.plik')
+        @section('content')
+        @endsection
+        @yield('content')
+
+    -------------------------------
+
+
+Query Strings
+    www.srogiehacjendy.com/home?source=facebook
+
+    $source = request("source");
+    //nie używamy GET w laravelu
+
+Route Parameters
+    www.srogiehacjendy.com/2
+    www.srogiehacjendy.com/7
+    www.srogiehacjendy.com/343434
+    www.srogiehacjendy.com/marek
+
+    np. konkretne ogłoszenie (przez ID)
+
+    Route::get('/home/{id}', function ($id) {
+        //używamy id do wyciągnięcia danych z bazy
+        return view('offerDetail', []);
+    });
+
+
 

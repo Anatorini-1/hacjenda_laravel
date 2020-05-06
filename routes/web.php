@@ -18,42 +18,16 @@ Route::get('/', function () {
 });
 
 
-Route::get('/home', function () {
+Route::get('/home', 'HomeController@index');
 
-    //przykładowe dane, w założeniu pobrane z bazy
-    
-    $data = [
-        'numer' => 0,
-        'author' => "Anatorini",
-        'desc' => "Some random string idk",
-    ];
+Route::get('/login', 'ProfileController@login');
 
-    return view('home', $data);
-    //Strona główna, htaccess przekierowuje domyślnie na ten widok
+Route::get('/myProfile', 'ProfileController@myProfile');
 
-});
+Route::get('/adminPanel', 'DevController@adminPanel');
 
-Route::get('/login', function () {
-    return view('login');
-    //panel logowania/rejestracji
-});
+Route::get('/postOffer', 'OfferController@postOffer');
 
-Route::get('/myProfile', function () {
-    return view('myProfile');
-    //widok profilu urzytkownika
-});
+Route::get('/recovery', 'ProfileController@recovery');
 
-Route::get('/adminPanel', function () {
-    return view('adminPanel');
-    //widok panelu administratora
-});
-
-Route::get('/postOffer', function () {
-    return view('postOffer');
-    //widok panelu tworzenia oferty
-});
-
-Route::get('/recovery', function () {
-    return view('recovery');
-    //widok panelu odzyskiwania hasła
-});
+Route::get('/test', 'DevController@test');
