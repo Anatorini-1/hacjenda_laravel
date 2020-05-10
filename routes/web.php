@@ -2,16 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 
 //GET REQUESTS
@@ -20,7 +10,7 @@ Route::get('/', 'StartController@index');
 
 Route::get('/users/login', 'ProfileController@login');
 
-Route::get('/users/myProfile', 'ProfileController@myProfile');
+Route::get('/users/myProfile', 'ProfileController@myProfile')->middleware('auth');
 
 Route::get('/users/recovery', 'ProfileController@recovery');
 
@@ -38,16 +28,19 @@ Route::get('/dev/test', 'DevController@test');
 //POST REQUESTS
 
 Route::post('/offers', 'OfferController@store');
+Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
 
 
 //DELETE REQUESTS
 
-Route::delete('offers/{id}','OfferController@destroy');
+Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
 
 
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+Auth::routes([
+    //'register' => false
+]);
 
 Route::get('/home', 'HomeController@index')->name('home');

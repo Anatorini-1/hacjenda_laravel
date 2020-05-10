@@ -18,7 +18,7 @@
        
            <tr>
          
-            <td> <a href="./offers/{{$item['id']}}">{{$item['id']}}</a></td>
+            <td> <a href="./offers/{{$item['id']}}">{{ $loop->index+1 }}</a></td>
                 <td>{{$item['miasto']}}</td>
                 <td>{{$item['powierzchnia']}}&nbsp;m2</td>
             </tr>

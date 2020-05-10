@@ -71,3 +71,70 @@ html, body {
 .main-content{
     margin: 0 auto;
 }
+
+.layout-footer{
+    width:100%;
+    background-color: rgba(153, 153, 153, 0.5);
+    height: 30px;;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    font-size: 18px;;
+}
+
+.flex-box{
+    display:flex;
+}
+
+.flex_1{
+    flex:1;
+    text-align: center;
+    font-size: 30px;
+}
+
+.admin-item{
+    width:80%;
+    min-height: 65px;;
+    background-color: rgb(172, 172, 172);
+    margin: 0 auto;
+    border-radius: 15px;;
+    font-size: 20px;;
+    padding:10px;
+    margin-bottom: 10px;;
+}
+
+.admin-actions{
+    position: fixed;
+    left: 20px;
+    min-height: 600px;
+    min-width: 200px;
+    background-color: rgb(0, 179, 110);
+    border-radius: 10px;
+}
+
+.admin-actions h3{
+    text-align: center;
+    text-decoration: underline;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    padding: 10px;
+    color:black;
+}
+
+.admin-actions ul{
+    color:rgb(30, 0, 70);
+    font-size: 20px;;
+    margin: 0;
+    padding-left:10px;
+}
+
+.admin-actions ul button{
+    background-color: transparent;
+    border:none;
+    color:rgb(30, 0, 70);
+    font-size: 20px;;
+}
+
+#app{
+    margin-bottom: 100px;;
+}

@@ -31,6 +31,5 @@
     </h3>
      <br />  
     </div>
-    
 @endsection
         

@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Home TaskForce</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -25,7 +25,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    Home TaskForce
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -35,10 +35,9 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item nav-left"><a href="/" class="nav-link">Home</a></li>
-                        <li class="nav-item nav-left"><a href="../users/myProfile" class="nav-link">Profile</a></li>
                         <li class="nav-item nav-left"><a href="../offers" class="nav-link">Offers</a></li>
                         <li class="nav-item nav-left"><a href="../offers/create" class="nav-link">Post Offer</a></li>
-                        <li class="nav-item nav-left"><a href="../users/recovery" class="nav-link">Password Recovery</a></li>
+                        
                         <li class="nav-item nav-left"><a href="../dev/adminPanel" class="nav-link">Admin Panel</a></li>
                         <li class="nav-item nav-left"><a href="../dev/test" class="nav-link">Test</a></li>
                     </ul>
@@ -63,12 +62,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/users/myProfile">
+                                        Mój Profil
+                                    </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
@@ -82,9 +83,9 @@
 ,
         <main class="main-content">
             @yield('content')
-
-          
         </main>
+    
     </div>
+<footer class='layout-footer'>Copyright &copy; "Home TaskForce" 2020 All rights reserved</footer>
 </body>
 </html>

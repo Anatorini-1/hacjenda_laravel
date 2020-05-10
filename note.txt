@@ -9,6 +9,8 @@ Artisan
 
     w php można wpisać error_log('cokolwiek')
 
+    php artisan maake:NewDataType -mc  -- tworzy naraz model, migracje i kontrolery
+
 Blade syntax
         {{ $var }} - wyświetl zmienna przekazaną do widoku
     -------------------------------------   
