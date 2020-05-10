@@ -104,7 +104,7 @@ html, body {
 }
 
 .admin-actions{
-    position: fixed;
+    position: absolute;
     left: 20px;
     min-height: 600px;
     min-width: 200px;
@@ -137,4 +137,13 @@ html, body {
 
 #app{
     margin-bottom: 100px;;
+}
+
+.dev-table td{
+    border:1px solid black;
+    padding:10px;
+}
+
+.dev-table{
+    margin:0 auto;
 }

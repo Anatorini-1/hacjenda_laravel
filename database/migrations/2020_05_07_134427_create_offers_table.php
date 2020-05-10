@@ -21,6 +21,7 @@ class CreateOffersTable extends Migration
             $table->float("okres_czasu");
             $table->date("do_kiedy");
             $table->integer("powierzchnia");
+            $table->softDeletes();
             $table->json('jobs');
         });
     }

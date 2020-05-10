@@ -3,44 +3,69 @@
 use Illuminate\Support\Facades\Route;
 
 
-
-//GET REQUESTS
-
 Route::get('/', 'StartController@index');
 
-Route::get('/users/login', 'ProfileController@login');
 
-Route::get('/users/myProfile', 'ProfileController@myProfile')->middleware('auth');
+//Offers
+    Route::delete('/offers/wipe', 'OfferController@wipe');
 
-Route::get('/users/recovery', 'ProfileController@recovery');
+    Route::get('/offers', 'OfferController@index');
 
-Route::get('/offers', 'OfferController@index');
+    Route::get('/offers/create', 'OfferController@create');
 
-Route::get('/offers/create', 'OfferController@create');
+    Route::get('/offers/{id}', 'OfferController@show');
 
-Route::get('/offers/{id}', 'OfferController@show');
+    Route::post('/offers', 'OfferController@store');
 
-Route::get('/dev/adminPanel', 'DevController@adminPanel');
+    Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
 
-Route::get('/dev/test', 'DevController@test');
-
-
-//POST REQUESTS
-
-Route::post('/offers', 'OfferController@store');
-Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
+    Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
 
 
-//DELETE REQUESTS
 
-Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
+//Dev
+    Route::get('/dev/adminPanel', 'DevController@adminPanel')->middleware('auth');
+
+    Route::get('/dev/test', 'DevController@test')->middleware('auth');
+
+    Route::post('/dev/sample','DevController@sample')->middleware('auth');
+    
+    Route::delete('dev/wipeOffers','DevController@wipeOffers')->middleware('auth');
+
+    Route::delete('dev/wipeUsers','DevController@wipeUsers')->middleware('auth');
+
+    Route::post('dev/history','DevController@history')->middleware('auth');
+
+//Auth
+
+    Route::get('/users/myProfile', 'ProfileController@myProfile')->middleware('auth');
+
+    Auth::routes();
+
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Auth::routes([
+        //'register' => false
+    ]);
+
+    Route::get('/home', 'HomeController@index')->name('home');
 
 
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes([
-    //'register' => false
-]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
