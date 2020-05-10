@@ -4,6 +4,10 @@ Artisan
     //kontrolery są tworzone w /app/http/controllers
     Route::get('/home', 'HomeController@index');
 
+    php artisan migrate - utworzy tabele z migracji
+    php artisan migrate:fresh - wywali utworzone tabele, i utworzy je od nowa
+
+    w php można wpisać error_log('cokolwiek')
 
 Blade syntax
         {{ $var }} - wyświetl zmienna przekazaną do widoku
@@ -71,6 +75,7 @@ Blade syntax
 
     -------------------------------
 
+    Do używania redirectów, należy użyć dyrektywy @csrf
 
 Query Strings
     www.srogiehacjendy.com/home?source=facebook
@@ -91,5 +96,29 @@ Route Parameters
         return view('offerDetail', []);
     });
 
+Migracje
+    php artisan migrate - utworzy tabele z migracji
+    php artisan migrate:fresh - wywali tabele, i utworzy je od nowa
+    php artisan migrate:rollback - cofa ostatnie zmiany
+    php artisan migrate:reset - wywala tabele utworzone przez Artisan, i tworzy je ponownie
+    php artisan migrate:status - status migracji
+
+    Do dodawania kolumn do istniejących tabel, należy stworzyć nową migrację
+    nazwa migracji MA znaczenie
+    php artisan make:migration add_column_to_table
+
+Modele
+    php artisan make:model Offer
+    Model::all() - zwraca wszystkie rekordy z tabbeli jako array
+    Model::orderBy('column','desc')->get(); - zwraca wszystkie rekordy z tabeli posortowane po tabeli
+    MOdel::where('column', 'value') -> get();
+    Model:latest() -> get(); 
+    Model::find($id) - zwraca rekord o danym id
+    Model::findOrFail($id) - zwraca rekord o danym id, jeśli nie istnieje, zwraca 404
+Przyjęte nazewnictwo
+    Route           controller&action       Viev
+    /name           NameController@index    index
+    /name/{id}      NameController@show     show
+    /name/create    NameController@create   create
 
 

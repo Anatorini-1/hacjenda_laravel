@@ -17,7 +17,7 @@ class HomeController extends Controller
             'desc' => "Some random string idk",
         ];
 
-        return view('home', $data);
+        return view('home.index', $data);
         //Strona główna, htaccess przekierowuje domyślnie na ten widok
 
     }

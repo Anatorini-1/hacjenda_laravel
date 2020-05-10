@@ -32,7 +32,9 @@ html, body {
 }
 
 .title {
-    font-size: 84px;
+    font-size: 64px;
+    text-align: center;
+    margin:0 auto;
 }
 
 .links > a {
@@ -47,4 +49,21 @@ html, body {
 
 .m-b-md {
     margin-bottom: 30px;
+    margin:0 auto;
+}
+
+.offer-card{
+    width: 600px;
+}
+
+
+#offer_table{
+   
+    margin: 0 auto;
+}
+
+.prace_do_wykonania{
+    border:1px solid grey;
+    display: inline;
+    padding: 20px;
 }

@@ -3,12 +3,14 @@
 
 @section('content')
 
+    @php
+        
+    @endphp
     <div class="content">
     <div class="title m-b-md">
-        Strona Główna
+        Panel Logowania
      <br />  
     </div>
     
 @endsection
         
-

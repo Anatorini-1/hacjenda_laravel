@@ -3,13 +3,12 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
+        <title>Laravel</title>       
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <link rel="stylesheet"  href="/css/main.css" type="text/css">
     </head>
     <body>
@@ -17,13 +16,15 @@
             @yield('content')
             
             <div class="links">
-                <a href="./home">Home</a>
-                <a href="./login">Login</a>
-                <a href="./myProfile">Profile</a>
-                <a href="./postOffer">Post Offer</a>
-                <a href="./recovery">Password Recovery</a>
-                <a href="./adminPanel">Admin Panel</a>
-                <a href="./test">TEST</a>
+                <a href="/">Home</a>
+                <a href="../users/login">Login</a>
+                <a href="../users/myProfile">Profile</a>
+                <a href="../offers/create">Post Offer</a>
+                <a href="../offers">Oferty</a>
+                
+                <a href="../users/recovery">Password Recovery</a>
+                <a href="../dev/adminPanel">Admin Panel</a>
+                <a href="../dev/test">TEST</a>
             </div>         
           
         </div>

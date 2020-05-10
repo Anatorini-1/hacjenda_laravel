@@ -13,21 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
-Route::get('/login', 'ProfileController@login');
+Route::get('/users/login', 'ProfileController@login');
 
-Route::get('/myProfile', 'ProfileController@myProfile');
+Route::get('/users/myProfile', 'ProfileController@myProfile');
 
-Route::get('/adminPanel', 'DevController@adminPanel');
+Route::get('/users/recovery', 'ProfileController@recovery');
 
-Route::get('/postOffer', 'OfferController@postOffer');
+Route::get('/offers', 'OfferController@index');
 
-Route::get('/recovery', 'ProfileController@recovery');
+Route::get('/offers/create', 'OfferController@create');
 
-Route::get('/test', 'DevController@test');
+Route::get('/offers/{id}', 'OfferController@show');
+
+Route::get('/dev/adminPanel', 'DevController@adminPanel');
+
+Route::get('/dev/test', 'DevController@test');
+
+Route::post('/offers', 'OfferController@store');
