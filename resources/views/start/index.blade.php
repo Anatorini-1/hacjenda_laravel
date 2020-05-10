@@ -1,8 +1,10 @@
-@extends('layout.layout')
+@extends('layouts.app')
+
 
 
 @section('content')
 <p>{{ session('msg') }}</p>
+
     <div class="content">
     <div class="title m-b-md">
         Strona Główna

@@ -22,8 +22,6 @@ class OfferController extends Controller
         return view('offers.show', ['data' => $offer]);
     }
 
- 
-
     public function store(){
 
         $offer = new Offer();
@@ -36,5 +34,12 @@ class OfferController extends Controller
         $offer->jobs = request('jobs');
         $offer->save();
         return redirect('/offers')->with('msg', "Order Registered");
+
+    }
+
+    public function destroy($id){
+        $offer = Offer::findOrFail($id); 
+        $offer->delete();
+        return redirect('/offers');
     }
 }

@@ -18,7 +18,7 @@ Blade syntax
             @endif
         
     -----------------------------------------
-        if...else if....else
+            if...else if....else
 
         @if($var > 10)
         
@@ -46,23 +46,23 @@ Blade syntax
 
     --------------------
 
-    pętle w Blade
+        pętle w Blade
 
-    @for($i = 1; $i < 10; $i++)
+        @for($i = 1; $i < 10; $i++)
 
-        /some code
-    @endfor
+            /some code
+        @endfor
 
 
     -----------------------
 
-    foreach
+        foreach
 
-    @foreach(@arr as $element)
-        //some code
-        //jest zmienna $loop zawierająca info o pętli
-        //$loop -> index zawiera iterator 
-    @endforeach
+        @foreach(@arr as $element)
+            //some code
+            //jest zmienna $loop zawierająca info o pętli
+            //$loop -> index zawiera iterator 
+        @endforeach
 
     ----------------------------
 
@@ -76,6 +76,8 @@ Blade syntax
     -------------------------------
 
     Do używania redirectów, należy użyć dyrektywy @csrf
+
+    @method('DELETE')
 
 Query Strings
     www.srogiehacjendy.com/home?source=facebook

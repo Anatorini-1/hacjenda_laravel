@@ -14,8 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+//GET REQUESTS
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'StartController@index');
 
 Route::get('/users/login', 'ProfileController@login');
 
@@ -33,4 +34,20 @@ Route::get('/dev/adminPanel', 'DevController@adminPanel');
 
 Route::get('/dev/test', 'DevController@test');
 
+
+//POST REQUESTS
+
 Route::post('/offers', 'OfferController@store');
+
+
+//DELETE REQUESTS
+
+Route::delete('offers/{id}','OfferController@destroy');
+
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

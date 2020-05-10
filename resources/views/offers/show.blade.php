@@ -1,4 +1,5 @@
-@extends('layout.layout')
+@extends('layouts.app')
+
 
 
 
@@ -21,6 +22,11 @@
     @foreach ($data['jobs'] as $job)
         <h2>{{ $job }}</h2>
     @endforeach
+    <form action="/offers/{{ $data->id }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button>Delete Offer</button>
+    </form>
         <br />  
 
     </div>

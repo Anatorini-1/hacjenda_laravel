@@ -67,3 +67,7 @@ html, body {
     display: inline;
     padding: 20px;
 }
+
+.main-content{
+    margin: 0 auto;
+}
