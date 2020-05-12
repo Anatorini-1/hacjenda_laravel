@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Offer;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 
 class OfferController extends Controller
@@ -14,7 +17,9 @@ class OfferController extends Controller
     }
 
     public function create(){
-       return view('offers.create');
+     
+        return view('offers.create');
+  
     }
     
     public function show($id){
@@ -32,6 +37,7 @@ class OfferController extends Controller
         $offer->do_kiedy = request('deadline');
         $offer->powierzchnia = request('powierzchnia');
         $offer->jobs = request('jobs');
+        $offer->user_id = Auth::user()->id;
         $offer->save();
         return redirect('/offers')->with('msg', "Order Registered");
 
@@ -39,7 +45,9 @@ class OfferController extends Controller
 
     public function destroy($id){
         $offer = Offer::findOrFail($id); 
+        $this->authorize('delete',$offer);
         $offer->delete();
+
         return redirect('/offers');
     }
 

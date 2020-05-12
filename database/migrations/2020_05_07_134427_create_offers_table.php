@@ -14,7 +14,7 @@ class CreateOffersTable extends Migration
     public function up()
     {
         Schema::create('offers', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
             $table->string("miasto");
             $table->string("adres");
@@ -23,6 +23,7 @@ class CreateOffersTable extends Migration
             $table->integer("powierzchnia");
             $table->softDeletes();
             $table->json('jobs');
+            $table->integer('user_id')->unsigned();
         });
     }
 

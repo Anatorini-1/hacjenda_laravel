@@ -2,7 +2,13 @@
 
 
 @section('content')
+@php
+    
+    use App\Dev;
+@endphp
 
+    @can('admin_panel_access', Dev::class)
+   
         <div class="title m-b-md">
            Admin Panel 
            @php
@@ -62,5 +68,6 @@
                 </div>
         </div>
         </div>
+        @endcan
 @endsection
         

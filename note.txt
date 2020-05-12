@@ -9,7 +9,7 @@ Artisan
 
     w php można wpisać error_log('cokolwiek')
 
-    php artisan maake:NewDataType -mc  -- tworzy naraz model, migracje i kontrolery
+    php artisan make:NewDataType -mc  -- tworzy naraz model, migracje i kontrolery
 
 Blade syntax
         {{ $var }} - wyświetl zmienna przekazaną do widoku
@@ -125,4 +125,8 @@ Przyjęte nazewnictwo
     /name/{id}      NameController@show     show
     /name/create    NameController@create   create
 
-
+Auth Boilerplate
+    npm install
+    npm run dev
+    compuoser require laravel/ui
+    php artisan ui vue --auth

@@ -147,3 +147,15 @@ html, body {
 .dev-table{
     margin:0 auto;
 }
+
+.profile-table{
+    margin: 0 auto;
+    display:inline;
+
+}
+
+.profile-table td{
+    border:1px solid rgb(66, 66, 66);
+    padding: 10px;;
+    font-size: 20px;
+}

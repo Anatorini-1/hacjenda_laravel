@@ -13,4 +13,7 @@ class Offer extends Model
      protected $casts = [
           'jobs' => 'array',
      ];
+     protected $fillable = [
+          'user_id',
+     ];
 }
