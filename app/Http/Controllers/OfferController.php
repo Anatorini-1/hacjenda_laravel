@@ -51,4 +51,33 @@ class OfferController extends Controller
         return redirect('/offers');
     }
 
+    public function update($id)
+        {
+            $offer = Offer::FindOrFail($id);
+            if( Auth::user()->can('update',$offer)){
+                return view('offers.update', ['data'=>$offer]);
+            }
+            else{
+                return abort(403);
+            }
+        }
+
+    public function save_update($id)
+    {
+        $offer = Offer::FindOrFail($id);
+            if( Auth::user()->can('update',$offer)){
+                $offer->miasto = request('miasto');
+                $offer->adres = request('adres');
+                $offer->okres_czasu = request('okres_czasu');
+                $offer->do_kiedy = request('do_kiedy');
+                $offer->powierzchnia = request('powierzchnia');
+               
+                $offer->save();
+                return redirect("/offers/{$id}");
+            }
+            else{
+                return abort(403);
+            }
+    }
+
 }

@@ -32,5 +32,14 @@ class OfferPolicy
             return Response::deny('Access Forbidden');
         }
     }
+    public function update(User $user, Offer $offer)
+    {
+        if($user->id == $offer->user_id){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
     
 }

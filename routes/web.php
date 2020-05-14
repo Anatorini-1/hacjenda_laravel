@@ -11,13 +11,19 @@ Route::get('/', 'StartController@index');
 
     Route::get('/offers', 'OfferController@index');
 
-    Route::get('/offers/create', 'OfferController@create');
+    Route::get('/offers/create', 'OfferController@create')->middleware('auth');
+
+    Route::get('/offers/update/{id}','OfferController@update')->middleware('auth');
+
+    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
 
     Route::get('/offers/{id}', 'OfferController@show');
 
     Route::post('/offers', 'OfferController@store');
 
     Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
+
+    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
 
     Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
 

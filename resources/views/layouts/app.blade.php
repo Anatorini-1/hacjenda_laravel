@@ -40,11 +40,11 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item nav-left"><a href="/" class="nav-link">Home</a></li>
-                        <li class="nav-item nav-left"><a href="../offers" class="nav-link">Offers</a></li>
-                        <li class="nav-item nav-left"><a href="../offers/create" class="nav-link">Post Offer</a></li>
+                        <li class="nav-item nav-left"><a href="/offers" class="nav-link">Offers</a></li>
+                        <li class="nav-item nav-left"><a href="/offers/create" class="nav-link">Post Offer</a></li>
                         
-                        <li class="nav-item nav-left"><a href="../dev/adminPanel" class="nav-link">Admin Panel</a></li>
-                        <li class="nav-item nav-left"><a href="../dev/test" class="nav-link">Test</a></li>
+                        <li class="nav-item nav-left"><a href="/dev/adminPanel" class="nav-link">Admin Panel</a></li>
+                        <li class="nav-item nav-left"><a href="/dev/test" class="nav-link">Test</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
