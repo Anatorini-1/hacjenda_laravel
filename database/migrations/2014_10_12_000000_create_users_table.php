@@ -25,7 +25,8 @@ class CreateUsersTable extends Migration
             $table->string('full_name', 100)->default('user');
             $table->string('city', 100)->default('user');
             $table->string('desc', 100)->nullable()->default(' ');
-            $table->string('profile_picture', 100)->nullable()->default('');
+            $table->string('profile_picture', 100)->nullable()->default('default.png');
+            $table->json('completed_orders')->nullable();
         });
     }
 

@@ -17,9 +17,35 @@
     <h2>Szacowany czas pracy: : {{$data['okres_czasu']}}</h2>
     <h2>Deadline: {{$data['do_kiedy']}}</h2>
     <h2>Powierzchnia: {{$data['powierzchnia']}}</h2>
-    @foreach ($data['jobs'] as $job)
-        <h2>{{ $job }}</h2>
-        @endforeach
+    <h2>Wynagrodzenie: {{$data['cena']}}</h2>
+    <fieldset style='border:1px solid #aaa; display:inline'>
+    @php
+        foreach ($data['jobs'] as $job) {
+            switch ($job){
+                case 1:
+                    echo "<h2> Mycie Okien </h2>";
+                break;
+                case 2:
+                    echo "<h2> Mycie Auta </h2>";
+                break;
+                case 3:
+                    echo "<h2> Odkurzanie </h2>";
+                break;
+                case 4:
+                    echo "<h2> Zcieranie kurzu </h2>";
+                break;
+                case 5:
+                    echo "<h2> Mycie Podłóg </h2>";
+                break;
+                case 6:
+                    echo "<h2> Sprzątanie Łazienki </h2>";
+                break;
+            }
+        }
+            
+    @endphp
+    </fieldset>
+    
     @can('delete', $data)
         <form action="/offers/{{ $data->id }}" method="POST">
             

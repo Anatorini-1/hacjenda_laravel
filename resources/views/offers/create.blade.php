@@ -16,6 +16,8 @@
             <input type="text" name="czas" placeholder="Czas pracy"><br />
             <input type="text" name="deadline" placeholder="Deadline"><br />
             <input type="text" name="powierzchnia" placeholder="Powierzchnia"><br />
+            <input type="number" name="cena" placeholder="Wynagrodzenia"><br />
+            Uwagi: <textarea name="uwagi" id='offer_desc'></textarea><br />
             <fieldset class="prace_do_wykonania">
                 <label>Prace do wykonania:</label> <br />
                 <input type="checkbox" name="jobs[]" value = '1'>Mycie Okien  <br />

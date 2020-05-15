@@ -29,7 +29,7 @@
                 <img class="card-img-top" src="/img/offer.png" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Oferta {{ $loop->index+1 }}</h5>
-                  <p class="card-text">Tu będzie opis oferty jak mi się będzie chciało zrobić do tego backend</p>
+                <p class="card-text">Opis: {{ $item['uwagi'] }}</p>
                   <table id="offer_table">
                         <tr>
                             <td>Gdzie?</td><td> {{$item['miasto']}}</td>
@@ -38,7 +38,7 @@
                             <td>Powierzchnia?</td><td> {{$item['powierzchnia']}}&nbsp;m2</td>
                         </tr>
                         <tr>
-                            <td>Wynagrodzenie?</td><td>Dowiemy sie jak to dodam do formularza</td>
+                            <td>Wynagrodzenie?</td><td>{{$item['cena']}} zł</td>
                         </tr>
                 </table>
                 <br />

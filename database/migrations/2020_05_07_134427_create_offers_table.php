@@ -20,9 +20,13 @@ class CreateOffersTable extends Migration
             $table->string("adres");
             $table->float("okres_czasu");
             $table->date("do_kiedy");
+            $table->integer('cena');
+            $table->string('clickbait', 100)->nullable()->default('default.png');
+            $table->string('uwagi', 250)->nullable()->default('');
             $table->integer("powierzchnia");
             $table->softDeletes();
             $table->json('jobs');
+            $table->enum('stan', ['otwarta', 'w_realizacji','zakonczona','anulowana'])->nullable()->default('otwarta');
             $table->integer('user_id')->unsigned();
         });
     }

@@ -43,6 +43,7 @@ class DevController extends Controller
                 $offer->do_kiedy = $deadline[$indexes[3]];
                 $offer->powierzchnia = $powierzchnie[$indexes[4]];
                 $offer->jobs = ['1','2','3'];
+                $offer->cena = 69420;
                 $offer->user_id='1';
                 $offer->save();
              }

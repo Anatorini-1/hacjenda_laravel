@@ -38,6 +38,9 @@ class OfferController extends Controller
         $offer->powierzchnia = request('powierzchnia');
         $offer->jobs = request('jobs');
         $offer->user_id = Auth::user()->id;
+        $offer->uwagi = request('uwagi');               
+        $offer->cena = request('cena');
+                   
         $offer->save();
         return redirect('/offers')->with('msg', "Order Registered");
 
@@ -63,21 +66,21 @@ class OfferController extends Controller
         }
 
     public function save_update($id)
-    {
-        $offer = Offer::FindOrFail($id);
-            if( Auth::user()->can('update',$offer)){
-                $offer->miasto = request('miasto');
-                $offer->adres = request('adres');
-                $offer->okres_czasu = request('okres_czasu');
-                $offer->do_kiedy = request('do_kiedy');
-                $offer->powierzchnia = request('powierzchnia');
-               
-                $offer->save();
-                return redirect("/offers/{$id}");
-            }
-            else{
-                return abort(403);
-            }
-    }
+        {
+            $offer = Offer::FindOrFail($id);
+                if( Auth::user()->can('update',$offer)){
+                    $offer->miasto = request('miasto');
+                    $offer->adres = request('adres');
+                    $offer->okres_czasu = request('okres_czasu');
+                    $offer->do_kiedy = request('do_kiedy');
+                    $offer->powierzchnia = request('powierzchnia');               
+                    $offer->jobs = request('jobs');
+                    $offer->save();
+                    return redirect("/offers/{$id}");
+                }
+                else{
+                    return abort(403);
+                }
+        }
 
 }

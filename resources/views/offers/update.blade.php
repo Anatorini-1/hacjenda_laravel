@@ -32,8 +32,16 @@
                 <td><input value='{{ $data['do_kiedy'] }}' type="text" name='do_kiedy'></td>
                 
             <tr>
-                <td> <span>Zadania (to jeszcze nie działa) </span> </td>
-                <td><input value='["2","3"]' type="text" name='jobs'></td>
+                <td> <span>Zadania </span> </td>
+                <td><fieldset class="prace_do_wykonania">
+                    <label>Prace do wykonania:</label> <br />
+                    <input type="checkbox" name="jobs[]" value = '1'>Mycie Okien  <br />
+                    <input type="checkbox" name="jobs[]" value = '2'>Mycie Auta <br />
+                    <input type="checkbox" name="jobs[]" value = '3'>Odkurzanie <br />
+                    <input type="checkbox" name="jobs[]" value = '4'>Zcieranie kurzu <br />
+                    <input type="checkbox" name="jobs[]" value = '5'>Mycie Podłóg <br />
+                    <input type="checkbox" name="jobs[]" value = '6'>Sprzątanie Łazienki <br />
+                </fieldset></td>
                  
             <tr>
                 <td> <span>Czas pracy </span> </td>
