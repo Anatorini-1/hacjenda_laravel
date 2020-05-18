@@ -73,7 +73,7 @@
                             <label for="city" class="col-md-4 col-form-label text-md-right">{{ __('Miasto') }}</label>
 
                             <div class="col-md-6">
-                                <input id="city" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="city" type="text" class="form-control" name="city" required>
                             </div>
                         </div>
                         <div class="form-group row">

@@ -60,9 +60,11 @@ class DevController extends Controller
 
     public function wipeUsers(){
         $users = User::all();
+       
         foreach ($users as $user) {
             $user->delete();
         }
+     
         return redirect('/dev/adminPanel');
     } 
 

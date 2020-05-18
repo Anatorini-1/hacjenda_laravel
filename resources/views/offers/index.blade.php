@@ -26,7 +26,7 @@
     @foreach ($data as $item)
         <div class="col-md-4">
             <div class="card offer-card" style="width: 18rem;">
-                <img class="card-img-top" src="/img/offer.png" alt="Card image cap">
+            <img class="card-img-top" src="/img/offer_pictures/{{ $item['clickbait'] }}" alt="Card image cap">
                 <div class="card-body">
                   <h5 class="card-title">Oferta {{ $loop->index+1 }}</h5>
                 <p class="card-text">Opis: {{ $item['uwagi'] }}</p>
