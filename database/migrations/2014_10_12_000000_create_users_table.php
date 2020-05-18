@@ -27,6 +27,8 @@ class CreateUsersTable extends Migration
             $table->string('desc', 100)->nullable()->default(' ');
             $table->string('profile_picture', 100)->nullable()->default('default.png');
             $table->json('completed_orders')->nullable();
+            $table->json('active_single_orders')->nullable();
+            $table->json('active_standing_orders')->nullable();
         });
     }
 

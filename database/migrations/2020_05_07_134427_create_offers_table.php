@@ -24,6 +24,8 @@ class CreateOffersTable extends Migration
             $table->string('clickbait', 100)->nullable()->default('default.png');
             $table->string('uwagi', 250)->nullable()->default('');
             $table->integer("powierzchnia");
+            $table->boolean('zlecenie_stale')->nullable()->default(false);
+            $table->string('czestotliwosc', 100)->nullable();
             $table->softDeletes();
             $table->json('jobs');
             $table->enum('stan', ['otwarta', 'w_realizacji','zakonczona','anulowana'])->nullable()->default('otwarta');

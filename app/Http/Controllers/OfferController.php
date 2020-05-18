@@ -11,9 +11,32 @@ use App\Http\Controllers\Controller;
 
 class OfferController extends Controller
 {
-    public function index(){
-     $offers = Offer::all();
-     return view('offers.index',['data' => $offers]);
+    public function index($id = 1){
+        $items_per_page = 6;
+        $offers = Offer::all();
+        
+        $toDisplay = [];
+        $pageCounter = floor((sizeof($offers)/$items_per_page))+1;
+        $active_page = $id;
+        if($active_page > $pageCounter || $active_page < 1){
+            return abort(404);
+        }
+        $id--;
+        for ($i=$items_per_page*$id; $i < $items_per_page*($id+1) ; $i++) {
+            if(isset($offers[$i])){
+               $toDisplay[] = $offers[$i];
+            }
+            
+             
+        }
+        
+        return view('offers.index',[
+            'data' => $toDisplay, 
+            'pageCount' => $pageCounter, 
+            'activePage' => $active_page,
+            'activesearch' => "",
+            'beforesearch' => '',
+            ]);
     }
 
     public function create(){
@@ -40,7 +63,14 @@ class OfferController extends Controller
         $offer->user_id = Auth::user()->id;
         $offer->uwagi = request('uwagi');               
         $offer->cena = request('cena');
-                   
+        if(request('zlecenie_stale') == 'on'){
+            $offer->czestotliwosc = request('czestotliwosc') ?? '';
+            $offer->zlecenie_stale = true;
+        }
+        else{
+            $offer->zlecenie_stale = false;
+        }
+        
         $offer->save();
         return redirect('/offers')->with('msg', "Order Registered");
 
@@ -82,5 +112,36 @@ class OfferController extends Controller
                     return abort(403);
                 }
         }
+
+    public function search($id = 1){
+        //http://127.0.0.1:8000/offers/search/?search=Warszawa
+        $search = request('search');
+        $items_per_page = 6;
+        $offers = Offer::where('miasto',$search)->get();
+        
+        $toDisplay = [];
+        $pageCounter = floor((sizeof($offers)/$items_per_page))+1;
+        $active_page = $id;
+        if($active_page > $pageCounter || $active_page < 1){
+            return abort(404);
+        }
+        $id--;
+        for ($i=$items_per_page*$id; $i < $items_per_page*($id+1) ; $i++) {
+            if(isset($offers[$i])){
+               $toDisplay[] = $offers[$i];
+            }
+            
+             
+        }
+        
+        return view('offers.index',[
+            'data' => $toDisplay, 
+            'pageCount' => $pageCounter, 
+            'beforesearch' => 'search/',
+            'activesearch' => "?search=".$search,
+            'activePage' => $active_page,
+            'search' => $search
+            ]);
+    }
 
 }

@@ -17,7 +17,7 @@ Route::get('/', 'StartController@index');
 
     Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
 
-    Route::get('/offers/{id}', 'OfferController@show');
+    Route::get('/offers/show/{id}', 'OfferController@show');
 
     Route::post('/offers', 'OfferController@store');
 
@@ -27,7 +27,9 @@ Route::get('/', 'StartController@index');
 
     Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
 
-
+    Route::get('/offers/search/{id}','OfferController@search');
+    
+    Route::get('/offers/{id}','OfferController@index');
 
 //Dev
     Route::get('/dev/adminPanel', 'DevController@adminPanel')->middleware('auth');
