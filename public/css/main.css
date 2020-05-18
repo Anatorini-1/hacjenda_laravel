@@ -215,3 +215,13 @@ html, body {
     resize: none;
 
 }
+
+#offer_buttons_fieldset{
+    border:1px solid black;
+    display: inline;
+    padding:15px;
+}
+
+#czestotliwosc{
+  display: none;
+}
