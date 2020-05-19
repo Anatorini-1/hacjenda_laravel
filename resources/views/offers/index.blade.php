@@ -16,7 +16,9 @@
         @csrf
         <textarea name="search" id='searchtxt' placeholder="Miasto"></textarea><br />
         <br />
-        <input type="button" onclick="Szukaj()">
+        <input type="button" onclick="OrderDesc()" value="desc">
+        <input type="button" onclick="OrderAsc()" value="asc">
+        <input type="button" onclick="Szukaj()" value="Szukaj">
     </form>
     <div class="row">
         <div class="col-md-12">
@@ -58,7 +60,7 @@
                         </tr>
                     </table>
                     <br />
-                    <a href="./offers/show/{{$item['id']}}" class="btn btn-primary">Szczegóły</a>
+                    <a href="http://127.0.0.1:8000/offers/show/{{$item['id']}}" class="btn btn-primary">Szczegóły</a>
                 </div>
             </div>
 
