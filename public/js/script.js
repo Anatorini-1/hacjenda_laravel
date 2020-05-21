@@ -1,6 +1,27 @@
-function Szukaj(){
-    search = document.querySelector('#searchtxt').value;
-    window.location.replace('http://127.0.0.1:8000/offers/search/1?search=' + search);
+var sort = 'desc';
+var search = '';
+var url = window.location.search.substr(1);
+var miasta = url.split('&');
+var miasto = "";
+console.log(miasto);
+function OrderAsc(){
+    miasto = miasta[0].split('=')[1];
+    sort = 'asc';
+    Szukaj(miasto);
+}
+function OrderDesc(){
+    miasto = miasta[0].split('=')[1];
+    sort = 'desc'
+    Szukaj(miasto);
+}
+function Szukaj(miasto){
+    if(miasto=="" || miasto==undefined){
+        search = document.querySelector('#searchtxt').value;
+        window.location.replace('http://127.0.0.1:8000/offers/search/1?search=' + search + '&sort=' + sort);
+    }
+    else{
+        window.location.replace('http://127.0.0.1:8000/offers/search/1?search=' + miasto + '&sort=' + sort);
+    }
 }
 
 

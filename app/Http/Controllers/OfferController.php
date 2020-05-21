@@ -14,7 +14,6 @@ class OfferController extends Controller
     public function index($id = 1){
         $items_per_page = 6;
         $offers = Offer::all();
-        
         $toDisplay = [];
         $pageCounter = floor((sizeof($offers)/$items_per_page))+1;
         $active_page = $id;
@@ -115,10 +114,18 @@ class OfferController extends Controller
 
     public function search($id = 1){
         //http://127.0.0.1:8000/offers/search/?search=Warszawa
+        //$url_components = parse_url($url); 
         $search = request('search');
+        $sort = request('sort');
+        var_dump($search);
+        if($search==null){
+        $offers = Offer::orderBy('created_at',$sort)->get();
+        }
+        else{
+        $offers = Offer::where('miasto','LIKE',"%{$search}%")->orderBy('created_at',$sort)->get();
+        var_dump($search);
+        }
         $items_per_page = 6;
-        $offers = Offer::where('miasto',$search)->get();
-        
         $toDisplay = [];
         $pageCounter = floor((sizeof($offers)/$items_per_page))+1;
         $active_page = $id;
@@ -138,9 +145,10 @@ class OfferController extends Controller
             'data' => $toDisplay, 
             'pageCount' => $pageCounter, 
             'beforesearch' => 'search/',
-            'activesearch' => "?search=".$search,
+            'activesearch' => "?search=".$search."&sort=".$sort,
             'activePage' => $active_page,
-            'search' => $search
+            'search' => $search,
+            'sort' => $sort,
             ]);
     }
 
