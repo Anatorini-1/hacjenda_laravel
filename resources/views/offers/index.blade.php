@@ -15,9 +15,9 @@
     <form action="/offers/search/1" method="POST">
         @csrf
         <textarea name="search" id='searchtxt' placeholder="Miasto"></textarea><br />
+        <input type="button" onclick="OrderDesc()" value="Najnowsze">
+        <input type="button" onclick="OrderAsc()" value="Najstarsze">
         <br />
-        <input type="button" onclick="OrderDesc()" value="desc">
-        <input type="button" onclick="OrderAsc()" value="asc">
         <input type="button" onclick="Szukaj()" value="Szukaj">
     </form>
     <div class="row">
