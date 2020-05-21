@@ -58,7 +58,6 @@ class OfferPolicy
         }
 
 
-    
 
     public function before(User $user){
         if($user->access = 'master'){
