@@ -18,28 +18,46 @@ class OfferPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(){
+
+            //
+        }
    
-    public function delete(User $user, Offer $offer)
-    {
-        if($user->id == $offer->user_id){
-            return Response::allow('Access Granted');
+
+    public function delete(User $user, Offer $offer){
+            if($user->id == $offer->user_id){
+                return Response::allow('Access Granted');
+            }
+            else{
+                return Response::deny('Access Forbidden');
+            }
         }
-        else{
-            return Response::deny('Access Forbidden');
+
+    public function update(User $user, Offer $offer){
+            if($user->id == $offer->user_id){
+                return true;
+            }
+            else{
+                return false;
+            }
         }
+    public function canAccept(User $user ,Offer $offer){
+            if($offer->stan != 'otwarta'){
+                return Response::deny('Oferta nie może zostać przyjęta!');
+            }
+
+            else if($user->id == $offer->user_id){
+                return Response::deny('Nie możesz przyjąć własnej oferty!');
+            }
+            else if($user->access == 'suspended'){
+                return Response::deny('Twoje konto zostało zawieszone. Jeśli uważasz że jest to spowodowane błędem, skontaktuj się z supportem');
+            }
+            else{
+                return Response::allow();
+            }
+        }
+
+
     }
-    public function update(User $user, Offer $offer)
-    {
-        if($user->id == $offer->user_id){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }
-    
-}
+
+
