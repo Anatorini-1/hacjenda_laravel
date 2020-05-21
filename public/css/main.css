@@ -225,3 +225,48 @@ html, body {
 #czestotliwosc{
   display: none;
 }
+
+.flex-container{
+    display: flex;
+    
+}
+
+.flex-1{
+    flex:1;
+    
+}
+
+.profile-fieldset{
+    border:1px solid red;
+    display:inline;
+    width:80%;
+    margin-bottom: 25px;;
+}
+
+.profile-offer-line{
+    background-color: rgb(223, 223, 223);
+    display:inline-block;
+    margin-bottom:10px;
+    box-sizing: border-box;
+}
+
+
+.profile-item{
+    width:80%;
+    min-height: 65px;;
+    background-color: rgb(172, 172, 172);
+    margin: 0 auto;
+    border-radius: 15px;;
+    font-size: 12px;;
+    padding:10px;
+    margin-bottom: 10px;;
+}
+ 
+.profile-item table tr td:first-child{
+    font-weight: bold;
+}
+
+.scrolled{
+    height: 400px;
+    overflow: scroll;
+}

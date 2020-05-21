@@ -53,13 +53,13 @@
             @method('DELETE')
             <button>Delete Offer</button>
             
-            <button>Complete</button>
         </form>
+    
     <a href="/offers/update/{{$data->id}}">
             <button>Edit Offer</button>
         </a>
     @endcan
-    
+    <br /><a href="/offers/accept/{{ $data->id }}"><button>Accept</button></a><br />
     
         <br />  
 

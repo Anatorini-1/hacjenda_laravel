@@ -7,29 +7,23 @@ Route::get('/', 'StartController@index');
 
 
 //Offers
-    Route::delete('/offers/wipe', 'OfferController@wipe');
-
+    
     Route::get('/offers', 'OfferController@index');
-
     Route::get('/offers/create', 'OfferController@create')->middleware('auth');
-
     Route::get('/offers/update/{id}','OfferController@update')->middleware('auth');
-
-    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
-
     Route::get('/offers/show/{id}', 'OfferController@show');
-
+    Route::get('/offers/search/{id}','OfferController@search'); 
+    Route::get('/offers/{id}','OfferController@index');
+    Route::get('/offers/accept/{id}','OfferController@accept')->middleware('auth');
+    
+    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
+    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth'); 
     Route::post('/offers', 'OfferController@store');
-
     Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
 
-    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
-
+    Route::delete('/offers/wipe', 'OfferController@wipe');
     Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
 
-    Route::get('/offers/search/{id}','OfferController@search');
-    
-    Route::get('/offers/{id}','OfferController@index');
 
 //Dev
     Route::get('/dev/adminPanel', 'DevController@adminPanel')->middleware('auth');
