@@ -128,5 +128,5 @@ Przyjęte nazewnictwo
 Auth Boilerplate
     npm install
     npm run dev
-    compuoser require laravel/ui
+    compouser require laravel/ui
     php artisan ui vue --auth
