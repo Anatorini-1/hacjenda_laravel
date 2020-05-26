@@ -24,6 +24,7 @@ class CreateFinishedOffersTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('employer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
