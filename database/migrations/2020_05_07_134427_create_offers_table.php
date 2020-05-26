@@ -29,7 +29,8 @@ class CreateOffersTable extends Migration
             $table->softDeletes();
             $table->json('jobs');
             $table->enum('stan', ['otwarta', 'w_realizacji','zakonczona','anulowana'])->nullable()->default('otwarta');
-            $table->integer('user_id')->unsigned()->references('id')->on('users');;
+            $table->biginteger('user_id')->unsigned()->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

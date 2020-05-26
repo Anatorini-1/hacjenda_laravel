@@ -141,13 +141,11 @@ class OfferController extends Controller
         //$url_components = parse_url($url); 
         $search = request('search');
         $sort = request('sort');
-        var_dump($search);
         if($search==null){
         $offers = Offer::where('stan','otwarta')->orderBy('created_at',$sort)->get();
         }
         else{
         $offers = Offer::where('stan','otwarta')->where('miasto','LIKE',"%{$search}%")->orderBy('created_at',$sort)->get();
-        var_dump($search);
         }
         $items_per_page = 6;
         $toDisplay = [];

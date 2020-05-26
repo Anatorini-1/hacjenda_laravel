@@ -16,11 +16,13 @@ class CreateActiveStandingOffersTable extends Migration
         Schema::create('active_standing_offers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('offer_id')->unsigned()->references('id')->on('opinions');;
-            $table->integer('employer_id')->unsigned()->references('id')->on('users');;
-            $table->integer('employee_id')->unsigned()->references('id')->on('users');;
+            $table->biginteger('employer_id')->unsigned()->references('id')->on('users');;
+            $table->biginteger('employee_id')->unsigned()->references('id')->on('users');;
             $table->dateTime('accepted_at');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('employer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
