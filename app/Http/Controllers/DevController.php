@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
+
 use App\Offer;
 use App\User;
+use App\Active_offer;
+use App\Active_standing_offer;
+use App\Finished_offer;
 
 class DevController extends Controller
 {
@@ -52,7 +57,22 @@ class DevController extends Controller
 
     public function wipeOffers(){
         $offers = Offer::all();
+        $active_offers = Active_offer::all();
+        $active_standing_offers = Active_standing_offer::all();
+        $finished_offers = Finished_offer::all();
         foreach ($offers as $offer) {
+            $offer->delete();
+        }
+
+        foreach ($active_offers as $offer) {
+            $offer->delete();
+        }
+
+        foreach ($active_standing_offers as $offer) {
+            $offer->delete();
+        }
+
+        foreach ($finished_offers as $offer) {
             $offer->delete();
         }
         return redirect('/dev/adminPanel');

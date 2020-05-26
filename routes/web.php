@@ -14,12 +14,13 @@ Route::get('/', 'StartController@index');
     Route::get('/offers/show/{id}', 'OfferController@show');
     Route::get('/offers/search/{id}','OfferController@search'); 
     Route::get('/offers/{id}','OfferController@index');
-    Route::get('/offers/accept/{id}','OfferController@accept')->middleware('auth');
+   
     
-    Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth');
+    Route::post('/offers/pending/{id}','OfferController@pending_accept')->middleware('auth');
     Route::post('offers/update/{id}','OfferController@save_update')->middleware('auth'); 
     Route::post('/offers', 'OfferController@store');
     Route::post('/offers/sample', 'OfferController@sample')->middleware('auth');
+    Route::post('/offers/accept/{offer_id}&{user_id}','OfferController@accept')->middleware('auth');
 
     Route::delete('/offers/wipe', 'OfferController@wipe');
     Route::delete('offers/{id}','OfferController@destroy')->middleware('auth');
@@ -52,7 +53,8 @@ Route::get('/', 'StartController@index');
 
     Route::get('/home', 'HomeController@index')->name('home');
 
-
+//Users
+        Route::get('/users/show/{id}','ProfileController@show');
 
 
 

@@ -9,6 +9,7 @@ use App\User;
 use App\Active_offer;
 use App\Active_standing_offer;
 use App\Finished_offer;
+use App\Pending_offer;
 
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -55,7 +56,16 @@ class OfferController extends Controller
     
     public function show($id){
         $offer = Offer::findOrFail($id);
-        return view('offers.show', ['data' => $offer]);
+        $pending = Pending_offer::where('offer_id',$offer->id)->get();
+        $pending_users = [];
+        foreach ($pending as $key => $value) {
+            $user = User::where('id',$value->user_id)->get()[0];
+            $pending_users[] = $user;
+        }
+        return view('offers.show', [
+            'data' => $offer,
+            'pending' => $pending_users,
+            ]);
     }
 
     public function store(){
@@ -67,7 +77,12 @@ class OfferController extends Controller
         $offer->okres_czasu = request('czas');
         $offer->do_kiedy = request('deadline');
         $offer->powierzchnia = request('powierzchnia');
-        $offer->jobs = request('jobs');
+        if(null !=request('jobs')){
+            $offer->jobs = request('jobs');
+        }
+        else{
+            $offer->jobs = [];
+        }
         $offer->user_id = Auth::user()->id;
         $offer->uwagi = request('uwagi');               
         $offer->cena = request('cena');
@@ -114,7 +129,7 @@ class OfferController extends Controller
                     $offer->powierzchnia = request('powierzchnia');               
                     $offer->jobs = request('jobs');
                     $offer->save();
-                    return redirect("/offers/{$id}");
+                    return redirect("/offers/show/{$id}");
                 }
                 else{
                     return abort(403);
@@ -160,64 +175,148 @@ class OfferController extends Controller
             ]);
     }
 
-
-    public function accept($id){
+    public function pending_accept($id)
+    {
         $offer = Offer::findOrFail($id);
-        $user = Auth::user();  
-        $authorization = Gate::inspect('canAccept', $offer);
-        error_log('siema'.$authorization);
+        $user = Auth::user(); 
+        $authorization = Gate::inspect('apply', $offer);
         if($authorization->allowed()){
-            if($offer->zlecenie_stale == 1){
-                $activated = new Active_standing_offer();
-            }
-            else{
-                $activated = new Active_offer();
-            }
-
-            $activated->id = null;
-            $activated->offer_id = $offer->id;
-            $activated->employer_id = $offer->user_id;
-            $activated->employee_id = $user->id;
-            $activated->accepted_at = Carbon::now();
-            $offer->stan = 'w_realizacji';
-            $activated->save();
-            $offer->save();
-
-
-            if($offer->zlecenie_stale == 1){
-                $activated =Active_standing_offer::all();
-                $activated = $activated[sizeof($activated)-1];
-                $json = $user->active_standing_orders;
-                $arr = json_decode($json,true);
-                $arr[] = $activated->id;
-                error_log($arr);
-                $user->active_standing_orders = $arr;
-                $user->save();
-            }
-            else{
-                $activated =Active_offer::all();
-                $activated = $activated[sizeof($activated)-1];
-               
-                $json = $user->active_single_orders;
-                $arr = json_decode($json,true);
-                $arr[] = $activated->id;
-                
-                $user->active_single_orders = $arr;
-                $user->save();
-            }
-            
-            
-            return view('offers.accepted',[
-                'msg' => $authorization->message(),
-                'allowed' => true,
-                ]);
+            $pending_accept = new Pending_offer();
+            $pending_accept->user_id = $user->id;
+            $pending_accept->offer_id = $offer->id;
+            $pending_accept->save();
+            return redirect("/offers/show/$offer->id")->with('msg','Przyjęto zgloszenie. Oczekujesz na odpowiedź zleceniodawcy');
+           
         }
-        if($authorization->denied()){
+        else{
             return view('offers.accepted',[
                 'msg' => $authorization->message(),
                 'allowed' => false,
                 ]);
         }
+    }
+/*
+    public function accept($offer_id, $user_id){
+        $offer = Offer::findOrFail($offer_id);
+        $user = Auth::user();
+        $employee = User::findOrFail($user_id);
+        $authorization_employee = Gate::inspect('canAccept',$employee, $offer);
+        $authorization_user = Gate::inspect('update',$offer);
+        error_log('siema'.$authorization_employee);
+        if($authorization_employee->allowed()){
+            if($authorization_user->allowed()){   
+                if($offer->zlecenie_stale == 1){
+                    $activated = new Active_standing_offer();
+                }
+                else{
+                    $activated = new Active_offer();
+                }
+
+                $activated->id = null;
+                $activated->offer_id = $offer->id;
+                $activated->employer_id = $offer->user_id;
+                $activated->employee_id = $user->id;
+                $activated->accepted_at = Carbon::now();
+                $offer->stan = 'w_realizacji';
+                $activated->save();
+                $offer->save();
+                if($offer->zlecenie_stale == 1){
+                    $activated =Active_standing_offer::all();
+                    $activated = $activated[sizeof($activated)-1];
+                    $json = $user->active_standing_orders;
+                    $arr = json_decode($json,true);
+                    $arr[] = $activated->id;
+                    error_log($arr);
+                    $user->active_standing_orders = $arr;
+                    $user->save();
+                }
+                else{
+                    $activated =Active_offer::all();
+                    $activated = $activated[sizeof($activated)-1];
+                
+                    $json = $user->active_single_orders;
+                    $arr = json_decode($json,true);
+                    $arr[] = $activated->id;
+                    
+                    $user->active_single_orders = $arr;
+                    $user->save();
+                }
+                
+                
+                return view('offers.accepted',[
+                'msg' => $authorization->message(),
+                'allowed' => true,
+                ]);
+        }
+        }
+        if($authorization_employee->denied()){
+            return view('offers.accepted',[
+                'msg' => $authorization_employee->message(),
+                'allowed' => false,
+                ]);
+        }
+        }
+*/
+
+
+public function accept($offer_id, $user_id)
+{
+   
+    $employer = Auth::user();
+    $employee = User::FindOrFail($user_id);
+    $offer = Offer::FindOrFail($offer_id);
+    $access = Gate::inspect('employ', $offer);
+    if($access->allowed()){
+        if($offer->clecenie_stale == 1){
+            $new_entry = new Active_standing_offer();
+        }
+        if($offer->zlecenie_Stale == 0){
+            $new_entry = new Active_offer();
+        }
+        $new_entry->offer_id = $offer->id;
+        $new_entry->employee_id = $employee->id;
+        $new_entry->employer_id = $employer->id;
+        $new_entry->accepted_at = Carbon::now();
+        $offer->stan = 'w_realizacji';
+        $new_entry->save();
+
+        if($offer->zlecenie_stale == 1){
+            $activated =Active_standing_offer::all();
+            $activated = $activated[sizeof($activated)-1];
+            $json = $employee->active_standing_orders;
+            $arr = json_decode($json,true);
+            $arr[] = $activated->id;
+            error_log($arr);
+            $employee->active_standing_orders = $arr;
+            $employee->save();
+        }
+        else{
+            $activated =Active_offer::all();
+            $activated = $activated[sizeof($activated)-1];
+        
+            $json = $employee->active_single_orders;
+            $arr = json_decode($json,true);
+            $arr[] = $activated->id;
+            
+            $employee->active_single_orders = $arr;
+            $employee->save();
         }
 
+        $to_del = Pending_offer::where('offer_id',$offer->id)->get();
+        foreach ($to_del as $key => $value) {
+            $value::delete();
+        }
+        return view('offers.accepted',[
+            'msg' => $access->message(),
+            'allowed' => true,
+            ]);
+    }
+    else{
+        return view('offers.accepted',[
+            'msg' => $access->message(),
+            'allowed' => false,
+            ]);
+    }
+        
+}
 }
