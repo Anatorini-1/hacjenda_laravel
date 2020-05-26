@@ -304,7 +304,7 @@ public function accept($offer_id, $user_id)
 
         $to_del = Pending_offer::where('offer_id',$offer->id)->get();
         foreach ($to_del as $key => $value) {
-            $value::delete();
+            $value->delete();
         }
         return view('offers.accepted',[
             'msg' => $access->message(),

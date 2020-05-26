@@ -15,10 +15,11 @@ class CreatePendingOffersTable extends Migration
     {
         Schema::create('pending_offers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('user_id')->unsigned()->references('id')->on('users');
+            $table->bigInteger('user_id')->unsigned()->references('id')->on('users');
             $table->integer('offer_id')->unsigned()->references('id')->on('offers');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

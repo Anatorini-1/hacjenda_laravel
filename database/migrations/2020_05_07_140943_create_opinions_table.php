@@ -18,7 +18,6 @@ class CreateOpinionsTable extends Migration
             $table->timestamps();
             $table->string('opinia');
             $table->integer('ocena');
-            $table->integer('userId')->references('id')->on('users');
         });
     }
 

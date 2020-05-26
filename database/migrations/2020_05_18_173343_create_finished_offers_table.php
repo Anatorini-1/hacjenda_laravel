@@ -16,13 +16,14 @@ class CreateFinishedOffersTable extends Migration
         Schema::create('finished_offers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('offer_id')->unsigned()->references('id')->on('offers');
-            $table->integer('employer_id')->unsigned()->references('id')->on('users');
-            $table->integer('employee_id')->unsigned()->references('id')->on('users');
+            $table->biginteger('employer_id')->unsigned()->references('id')->on('users');
+            $table->biginteger('employee_id')->unsigned()->references('id')->on('users');
             $table->dateTime('accepted_at');
             $table->dateTime('finished_at');
             $table->integer('opinion_id')->unsigned()->references('id')->on('opinions');;
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
