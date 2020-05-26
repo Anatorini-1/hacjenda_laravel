@@ -271,15 +271,28 @@ public function accept($offer_id, $user_id)
     if($access->allowed()){
         if($offer->clecenie_stale == 1){
             $new_entry = new Active_standing_offer();
+            if(Active_staning_offer::where('employee_id',$employee->id)->where('offer_id',$offer->id)->count() > 0){
+                return view('offers.accepted',[
+                    'msg' => 'Oferta już została zatwierdzona',
+                    'allowed' => false,
+                    ]); 
+            }
         }
         if($offer->zlecenie_Stale == 0){
             $new_entry = new Active_offer();
+            if(Active_offer::where('employee_id',$employee->id)->where('offer_id',$offer->id)->count() > 0){
+                return view('offers.accepted',[
+                    'msg' => 'Oferta już została zatwierdzona',
+                    'allowed' => false,
+                    ]); 
+            }
         }
         $new_entry->offer_id = $offer->id;
         $new_entry->employee_id = $employee->id;
         $new_entry->employer_id = $employer->id;
         $new_entry->accepted_at = Carbon::now();
         $offer->stan = 'w_realizacji';
+        $offer->save();
         $new_entry->save();
 
         if($offer->zlecenie_stale == 1){
@@ -306,7 +319,7 @@ public function accept($offer_id, $user_id)
 
         $to_del = Pending_offer::where('offer_id',$offer->id)->get();
         foreach ($to_del as $key => $value) {
-            $value::delete();
+            $value->delete();
         }
         return view('offers.accepted',[
             'msg' => $access->message(),

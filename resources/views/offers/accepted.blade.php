@@ -4,7 +4,7 @@
 @section('content')
 
 @if ($allowed)
-    Brawo, przyjołeś oferte, chcesz medal?
+    Oferta Zatwierdzona
 @endif
 
 @unless ($allowed)
