@@ -21,6 +21,9 @@
                 <h2>Deadline: {{$data['do_kiedy']}}</h2>
                 <h2>Powierzchnia: {{$data['powierzchnia']}}</h2>
                 <h2>Wynagrodzenie: {{$data['cena']}}</h2>
+                @if ($data->zlecenie_stale)
+                <h2>Wykonane prace: {{$data['jobs_done']}}</h2>
+                @endif
                 <fieldset style='border:1px solid #aaa; display:inline'>
                 @php
                     foreach ($data['jobs'] as $job) {
@@ -55,6 +58,17 @@
                     <tr>
                         <td>Stan:</td>
                         <td>
+                        @cannot('apply', $data)
+                            @php
+                                $res = Gate::inspect('apply',$data);
+                                echo $res->message();
+                            @endphp
+                        @endcannot
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Akcje</td>
+                        <td>
                             @can('delete', $data)
                             <form action="/offers/{{ $data->id }}" method="POST">
                                 
@@ -64,23 +78,24 @@
                                 
                             </form>
                         
-                        <a href="/offers/update/{{$data->id}}">
-                                <button>Edit Offer</button>
+                            <a href="/offers/update/{{$data->id}}">
+                                <button>Edit Offer</button><br />
                             </a>
                         @endcan
-                        @can('apply', $data)
-                            
+                    @can('apply', $data)   
                         <form action="/offers/pending/{{ $data->id }}" method='post'>
                             @csrf;
                             <button type='submit'>Accept</button>
                         </form>
-                        @endcan
-                        @cannot('apply', $data)
-                            @php
-                                $res = Gate::inspect('apply',$data);
-                                echo $res->message();
-                            @endphp
-                        @endcannot
+                    @endcan
+                    @if ($data->stan == 'w_realizacji')
+                    @can('finish', $data)
+                    <form action="/offers/finish/{{ $data->id }}" method='post'>
+                        @csrf;
+                        <button type='submit'>Oznacz jako wykonane</button>
+                    </form>
+                    @endcan
+                    @endif
                         </td>
                     </tr>
                     <tr>

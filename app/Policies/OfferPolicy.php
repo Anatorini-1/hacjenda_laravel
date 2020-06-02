@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Offer;
 use App\User;
 use App\Pending_offer;
+use App\Active_offer;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Http\Controllers\Auth;
 use Illuminate\Auth\Access\Response;
@@ -27,29 +28,33 @@ class OfferPolicy
 
     public function delete(User $user, Offer $offer){
             if($user->id == $offer->user_id){
-                return Response::allow('Access Granted');
-            }
-            else{
+                if($offer->stan =='otwarta'){
+                    return Response::allow('Access Granted');
+                }
+            }        
                 return Response::deny('Access Forbidden');
-            }
         }
 
     public function update(User $user, Offer $offer){
             if($user->id == $offer->user_id){
                 return true;
             }
-            else{
-                return false;
-            }
+            return false;
         }
     public function apply(User $user ,Offer $offer){
-            if($offer->stan != 'otwarta'){
-                return Response::deny('Oferta nie może zostać przyjęta!');
+            if($offer->stan == 'w_realizacji'){
+                return Response::deny('Oferta jest w realizacji');
+            }
+            else if($offer->stan == 'zakonczona'){
+                return Response::deny('Oferta została zrealizowana');
             }
 
             else if($user->id == $offer->user_id){
-                return Response::deny('Nie możesz przyjąć własnej oferty!');
+                return Response::deny('Oczekuje na wykonawcę');
             }
+           
+
+           
             else if($user->access == 'suspended'){
                 return Response::deny('Twoje konto zostało zawieszone. Jeśli uważasz że jest to spowodowane błędem, skontaktuj się z supportem');
             }
@@ -79,7 +84,17 @@ class OfferPolicy
             return Response::deny('Nie możesz');
         }
     }
-
+    public function finish(User $user, Offer $offer)
+    {
+      $active = Active_offer::where('offer_id', $offer->id)->get();
+      $active = $active[0];
+      if($active->employer_id == $user->id){
+        return true;
+      }
+      else{
+          return false;
+      }
+    }
 
     public function before(User $user){
         if($user->access == 'master'){

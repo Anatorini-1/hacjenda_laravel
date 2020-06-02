@@ -1,5 +1,5 @@
 html, body {
-    background-color: #fff;
+    background-color: #f3ecdb;
     color: #636b6f;
     font-family: 'Nunito', sans-serif;
     font-weight: 200;
@@ -82,8 +82,8 @@ html, body {
 }
 
 .card-img-top{
-    height: 200px !important;
-    width:200px !important;
+    height: 21vw;
+    width:21vw !important;
     margin: 0 auto;
 }
 
@@ -182,9 +182,9 @@ html, body {
 }
 
 .profile-table td{
-    border:1px solid rgb(66, 66, 66);
+    
     padding: 10px;;
-    font-size: 13px;
+    font-size: 0.7rem;
 }
 
 .profile-label{
@@ -282,3 +282,444 @@ html, body {
 .offer-actions{
     font-size: 20px;;
 }
+
+.review-form{
+    margin:0 auto;
+    min-height: 200px;
+    width: 400px;
+    background-color: rgb(187, 187, 187);
+    margin-top:150px;
+    padding: 30px;
+    text-align: center;
+}
+#searchtxt{
+resize: none;
+height: 30px;
+}
+
+#sticky_footer{
+    position: fixed;
+    bottom: 0;
+    width:100%;
+}
+
+
+body{
+    background-color: #f3ecdb ;
+    font-family: cursive;
+    text-align: justify;
+    font-size: 20px;
+    max-width: auto;
+    max-height: auto;
+    padding: 0;
+    margin: 0;
+    padding-bottom: 50px;
+}
+
+.profilek{
+    margin: 0 auto;
+    text-align: center;
+}
+.zmiana{
+    text-align: center;
+}
+
+.navbar a{
+    color: #f3ecdb;
+}
+
+.navbar.navbar-light.bg-warning.navbar-expand-md{
+    width: 100%;
+}
+
+#logo{
+    width: 50px;
+    height: 50px;
+}
+
+#info{
+    padding:20px;
+    background-color: #d49d11;
+    border-radius: 40px;
+
+}
+
+.col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3{
+
+    margin: 0 auto;
+
+    margin-top: 30px;
+}
+
+*{
+    padding: 0; 
+    margin: 0;
+    box-sizing: border-box; 
+}
+
+#content{
+    margin:0;
+    padding-right: 40px;
+    padding-left: 10px;
+}
+
+#oferta{
+
+    margin-top: 2%;
+    height: 400px;
+}
+
+.oferta{
+    width: 50%;
+    float:left;
+    margin-top: 20px;
+}
+
+#przyjmij_oferte{
+    margin-left: 10%;
+}
+
+.card{
+    border-radius: 8px;
+    border: 3px solid ;
+    margin-top: 10px;
+    font-size: 14px;
+    min-height: 550px;
+    margin: 0 auto;
+}
+
+.card-body{
+   
+    height:160px;
+}
+
+.row{
+    margin: 30px;
+}
+
+img{
+    width: 240px;
+    height: 362.3px;
+}
+
+label{
+    padding: 5px;
+}
+
+
+.form-check-label{
+    padding: 5px;
+    
+}
+
+.form-check-input{
+    margin-top:15px;
+}
+
+#stworz_oferte{
+    border: 1px solid red;
+    margin: 5%;
+    background-color: #d49d11;
+    border: 3px solid ;
+    border-radius: 1%;
+    padding: 5px;
+    padding-bottom: 15px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.btn.btn-info{
+    width: 150px;
+    height: 50px;
+    border: 2px solid black;
+}
+
+#edycja{
+    margin:auto;
+    max-width:initial !important;
+    font-size:1.125rem !important;
+}
+
+#opinie{
+    background-color: lightblue;
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+    border-radius: 1%;
+    margin-top: 10px;
+}
+
+.card.text-white.bg-secondary.mb-3{
+    margin-top: 10px;
+    width: 200%;
+}
+
+
+a{
+    text-decoration:none;
+    margin:0;
+    padding: 0;
+}
+
+#f1{
+    width: 400px;
+    height: 100%;
+    margin: auto;
+    margin-top: 300px;
+    background-color: #e8d45c;
+    border-radius: 5px;
+    border: 4px solid #808080;
+    padding:20px;
+}
+
+#f2{
+    width: 600px;
+    height: 100%;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 40px;
+    background-color: #e8d45c;
+    border-radius: 5px;
+    border: 4px solid #808080;
+    padding: 20px;
+    padding-right: 0;
+}
+
+#form_2{
+    margin-bottom: 10%3;
+}
+
+.szukanie{
+    margin: 0 auto;
+    width: 250px;
+    text-align: center;
+}
+
+#f3{
+    width: 400px;
+    height: 100%;
+    margin: auto;
+    margin-top: 300px;
+    background-color: #e8d45c;
+    border-radius: 5px;
+    border: 4px solid #808080;
+    padding: 20px;
+    
+}
+
+.logowanie{
+    border: 2px solid #808080;
+    padding: 10px 0px 10px 10px;
+    border-radius: 10px;
+    width: 80%;
+    margin: 0 auto;
+    margin-left: 15px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+.searchs{
+    width: 250px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+
+
+#male{
+    width: 19%;
+}
+
+#female{
+    width: 15%;
+}
+
+#logowanie_ch{
+    border: 2px solid #808080;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+#zaloguj{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #2e8b57;
+    font-family: cursive;
+    font-size: 20px;
+    margin-left:10%;
+}
+
+#zarejestruj{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #2e8b57;
+    font-family: cursive;
+    font-size: 20px;
+    margin:auto;
+    margin-left: 33%;
+}
+
+#zapomniales{
+    margin-left: 25%;
+}
+
+#nie_masz{
+    margin-left: 25%;
+}
+
+#masz_konto{
+    margin-left: 35%;
+}
+
+
+
+#wyslij_link{
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #2e8b57;
+    font-family: cursive;
+    font-size: 20px;
+    margin-left: 10%;
+}
+
+#wroc_logowanie{
+    margin-left: 20%;
+}
+
+#settings{
+    width: 100%;
+    height: auto;
+    background-color: #e8d45c;
+    border-radius: 5px;
+    border: 4px solid #808080;
+    padding: 20px;
+}
+
+#ch_change{
+    padding: 15px;
+    padding-left: 5px;
+    border-radius: 10px;
+    background-color: #2e8b57;
+    font-family: cursive;
+    font-size: 20px;
+    margin-left: 35%;
+    margin-bottom: 10px;
+    width: 30%;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+
+}
+
+.cointainer-fluid{
+    margin-bottom: 5%;
+}
+
+.nav-item.login{
+    flex-grow: 1;
+}
+
+.nav-item.rejestacja{
+    flex-grow: 1;
+}
+h5{
+    padding: 10px;
+    padding-top: 10px;
+}
+
+label{
+    width: 15%;
+}
+
+textarea {
+    resize: none;
+    border-radius: 1%;
+}
+
+#profilowe{
+    margin-bottom: 20px;
+    width:300px;
+}
+
+
+.offer-table td{
+    font-size: 30px;
+}
+.offer-table td:nth-child(2) span{
+    padding: 10px;
+    font-size: 30px;
+    border-left: 3px solid rgb(241, 191, 53);;
+    border-bottom: 3px solid rgb(241, 191, 53);;
+    margin-bottom: 10px;
+}
+.offer-table tr:last-child td span{
+    padding: 10px;
+    font-size: 30px;
+    border-left: none;
+    border-bottom: none;
+    
+}
+
+.offer_table{
+    font-size: 1rem;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#offer_table td:nth-child(2) span{
+    padding: 10px;
+    font-size: 30px;
+    border-left: 3px solid rgb(241, 191, 53);;
+    border-bottom: 3px solid rgb(241, 191, 53);;
+    margin-bottom: 10px;
+}
+.card-text{
+    overflow-y: scroll;
+   
+}
+.uzytkownik2{
+    width: 220px;
+    margin: 0 auto;
+    align-self: center;
+    text-align: center;
+}
+.uzytkownik{
+    margin: 0 auto;
+    text-align: center;
+}
+
+.profile-card .card-text{
+    overflow:initial;
+}
+
+.profile-x{
+    border: 2px solid #f3ecdb;;
+}
+
+@media only screen and (min-width: 600px) {
+    .profile-table td {
+      font-size: 1.2rem;
+    }
+    
+  }
+
+@media only screen and (max-width: 768px) {
+    .card-img-top{
+        height: 45vw;
+        width:45vw !important;
+        margin: 0 auto;
+    }
+    
+  }
+
+  @media only screen and (min-width: 1200px) {
+    .card .offer_table td {
+        font-size: 1.3rem;
+    }
+    
+  }
+
+ 

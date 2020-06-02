@@ -126,7 +126,18 @@ Przyjęte nazewnictwo
     /name/create    NameController@create   create
 
 Auth Boilerplate
+
     npm install
     npm run dev
     compouser require laravel/ui
     php artisan ui vue --auth
+
+    
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.googlemail.com
+MAIL_PORT=465
+MAIL_USERNAME=hacjenda.noreply@gmail.com
+MAIL_PASSWORD=zaq1@WSX
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=hacjenda.noreply@gmail.com
+MAIL_FROM_NAME="Verification no-reply"

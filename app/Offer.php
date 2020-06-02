@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-
+use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
 
 class Offer extends Model
 {
@@ -16,4 +16,6 @@ class Offer extends Model
      protected $fillable = [
           'user_id',
      ];
+    
+    
 }

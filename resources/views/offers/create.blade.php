@@ -17,8 +17,7 @@
             <input type="text" name="deadline" placeholder="Deadline"><br />
             <input type="text" name="powierzchnia" placeholder="Powierzchnia"><br />
             <input type="number" name="cena" placeholder="Wynagrodzenia"><br />
-           <label for="zlecenie_stale_checkbox">Zlecenie stałe?</label> <input oninput="zlecenia_stale(this)" type="checkbox" name="zlecenie_stale" id='zlecenie_stale_checkbox'><br />
-            <span id='czestotliwosc'></span>
+          
            Uwagi: <textarea name="uwagi" id='offer_desc'></textarea><br /> 
             <fieldset class="prace_do_wykonania">
                 <label>Prace do wykonania:</label> <br />

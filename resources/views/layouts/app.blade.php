@@ -25,73 +25,113 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <!-- CSS only -->
+
+<!-- JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+   
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Home TaskForce
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item nav-left"><a href="/" class="nav-link">Home</a></li>
-                        <li class="nav-item nav-left"><a href="/offers" class="nav-link">Offers</a></li>
-                        <li class="nav-item nav-left"><a href="/offers/create" class="nav-link">Post Offer</a></li>
-                        
-                        <li class="nav-item nav-left"><a href="/dev/adminPanel" class="nav-link">Admin Panel</a></li>
-                        <li class="nav-item nav-left"><a href="/dev/test" class="nav-link">Test</a></li>
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                       
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="/users/myProfile">
-                                        Mój Profil
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-,
-        <main class="main-content">
-            @yield('content')
-        </main>
+      <div class="cointainer-fluid">
     
-    </div>
-<footer class='layout-footer'>Copyright &copy; "Home TaskForce" 2020 All rights reserved</footer>
-</body>
-</html>
+        <header>
+          <nav class="navbar navbar-light  navbar-expand-md" style='background-color:#ffc107 !important'>
+            <a class="navbar-brand" href="/"><img id="logo" src="/img/logo.png" class="d-inline-block mr-1 align-bottom"
+                alt="">Hacjenda</a>
+    
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainmenu"
+              aria-controls="mainmenu" aria-expanded="false" aria-label="Przełącznik nawigacji">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <div class="collapse navbar-collapse" id="mainmenu">
+              <ul class="navbar-nav">
+                @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="/users/myProfile">Mój Profil</a>
+                  </li>
+                @endauth
+                
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="/offers/create">Stwórz ofertę</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="/offers">Oferty</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="/offers/finished">Zakończone Oferty</a>
+                </li>
+    
+                <li class="nav-item">
+                  <a class="nav-link" href="uzytkownicy.html">Użytkownicy</a>
+                </li>
+                @guest
+                <li class="nav-item login">
+                    <a class="nav-link" href="/login">Zaloguj się</a>
+                  </li>
+                  
+                  <li class="nav-item rejestracja">
+                    <a class="nav-link" href="/register">Zarejestruj się</a>
+                  </li>
+                  
+                @endguest
+                </ul>
+                @auth
+                    
+              
+                <ul class="navbar-nav ml-auto">
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }} <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/users/myProfile">
+                            Mój Profil
+                        </a>
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                            {{ __('Logout') }}
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+                
+              </ul>
+              @endauth
+            </div>
+          </nav>
+        </header>
+        @yield('content')
+       
+      </div>
+    
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+      <div class="container text-center">
+        <small>Copyright &copy; Hacjenda company</small>
+      </div>
+    </footer>
+    
+      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+     
+    
+    </body>
+    
+    </html>
+    

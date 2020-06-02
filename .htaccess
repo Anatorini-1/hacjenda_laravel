@@ -1,0 +1,14 @@
+RewriteEngine on
+
+RewriteCond %{HTTP_HOST} ^(www.)?178.252.25.125$
+
+RewriteCond %{REQUEST_URI} !^/public/
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /public/$1
+
+RewriteCond %{HTTP_HOST} ^(www.)?178.252.25.125$
+RewriteRule ^(/)?$ public/index.php [L]
+
+Options -Indexes

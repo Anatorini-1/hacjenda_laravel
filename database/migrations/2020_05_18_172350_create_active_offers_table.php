@@ -15,14 +15,17 @@ class CreateActiveOffersTable extends Migration
     {
         Schema::create('active_offers', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('offer_id')->unsigned()->references('id')->on('offers');;
-            $table->biginteger('employer_id')->unsigned()->references('id')->on('users');;
-            $table->biginteger('employee_id')->unsigned()->references('id')->on('users');;
+            $table->bigInteger('offer_id')->unsigned();
+            $table->bigInteger('employer_id')->unsigned()->references('id')->on('users');;
+            $table->bigInteger('employee_id')->unsigned()->references('id')->on('users');;
             $table->dateTime('accepted_at');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('employee_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('employer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('offer_id')->references('id')->on('offers')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('employer_finished')->default(false);
+            $table->boolean('employee_finished')->default(false);
         });
     }
 

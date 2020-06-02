@@ -18,8 +18,8 @@ class CreateOpinionsTable extends Migration
             $table->timestamps();
             $table->string('opinia');
             $table->integer('ocena');
-            $table->biginteger('user_Id')->references('id')->on('users');
-            $table->biginteger('offer_id');
+            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('offer_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
