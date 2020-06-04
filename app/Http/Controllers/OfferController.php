@@ -141,10 +141,15 @@ class OfferController extends Controller
         //$url_components = parse_url($url); 
         $search = request('search');
         $sort = request('sort');
-        if ($search == null) {
+        $praca = request('np');
+        if ($search == null && $praca== null) {
             $offers = Offer::where('stan', 'otwarta')->orderBy('created_at', $sort)->get();
-        } else {
+        }else if($praca == null){
             $offers = Offer::where('stan', 'otwarta')->where('miasto', 'LIKE', "%{$search}%")->orderBy('created_at', $sort)->get();
+        } else if($search == null){
+            $offers = Offer::where('stan', 'otwarta')->where('jobs', 'LIKE',  "%\"$praca\"%")->orderBy('created_at', $sort)->get();
+        }else{
+            $offers = Offer::where('stan', 'otwarta')->where('miasto', 'LIKE', "%{$search}%")->where('jobs', 'LIKE',  "%\"$praca\"%")->orderBy('created_at', $sort)->get();
         }
         $items_per_page = 6;
         $toDisplay = [];
@@ -160,12 +165,11 @@ class OfferController extends Controller
             }
         }
 
-
         return view('offers.index', [
             'data' => $toDisplay,
             'pageCount' => $pageCounter,
             'beforesearch' => 'search/',
-            'activesearch' => "?search=" . $search . "&sort=" . $sort,
+            'activesearch' => "?search=" . $search . "&sort=" . $sort . "&np=" . $praca,
             'activePage' => $active_page,
             'search' => $search,
             'sort' => $sort,
@@ -294,12 +298,17 @@ class OfferController extends Controller
         $items_per_page = 6;
         $search = request('search');
         $sort = request('sort');
+        $praca = request('praca');
         if($sort=="")
             $sort = 'desc';
-        if ($search == null) {
-            $offers = Offer::where('stan', 'zakonczona')->orderBy('created_at', $sort)->get();
-        } else {
-            $offers = Offer::where('stan', 'zakonczona')->where('miasto', 'LIKE', "%{$search}%")->orderBy('created_at', $sort)->get();
+        if ($search == null && $praca== null) {
+            $offers = Offer::where('stan', 'otwarta')->orderBy('created_at', $sort)->get();
+        }else if($praca == null){
+            $offers = Offer::where('stan', 'otwarta')->where('miasto', 'LIKE', "%{$search}%")->orderBy('created_at', $sort)->get();
+        }else if($search == null){
+            $offers = Offer::where('stan', 'otwarta')->where('jobs', 'LIKE',  "%\"$praca\"%")->orderBy('created_at', $sort)->get();
+        }else{
+            $offers = Offer::where('stan', 'otwarta')->where('miasto', 'LIKE', "%{$search}%")->where('jobs', 'LIKE',  "%\"$praca\"%")->orderBy('created_at', $sort)->get();
         }
         $toDisplay = [];
         $pageCounter = floor((sizeof($offers) / $items_per_page)) + 1;

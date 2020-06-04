@@ -225,7 +225,7 @@ html, body {
 }
 
 #offer_buttons_fieldset{
-    border:1px solid black;
+    border: 0;
     display: inline;
     padding:15px;
 }
@@ -722,4 +722,9 @@ textarea {
     
   }
 
- 
+ #praca-list{
+     width:250px;
+ }
+ .page_button{
+     text-align: center;
+ }
