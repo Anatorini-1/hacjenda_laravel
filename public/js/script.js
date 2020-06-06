@@ -6,7 +6,7 @@ var miasto = "";
 var finished = location.href.indexOf('finished');
 var sitee = location.href;
 console.log(sitee);
-var site_url = 'http://127.0.0.1:8000/';
+var site_url = 'https://srogiehacjendy.com/';
 function logkey(){
 document.addEventListener('keypress', pressed);
 }
