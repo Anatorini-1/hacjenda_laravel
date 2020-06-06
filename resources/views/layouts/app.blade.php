@@ -48,11 +48,9 @@
     
             <div class="collapse navbar-collapse" id="mainmenu">
               <ul class="navbar-nav">
-                @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="/users/myProfile">Mój Profil</a>
-                  </li>
-                @endauth
+                  <a class="nav-link" href="/">Home</a>
+                </li>
                 
     
                 <li class="nav-item">
@@ -68,33 +66,34 @@
                 </li>
     
                 <li class="nav-item">
-                  <a class="nav-link" href="uzytkownicy.html">Użytkownicy</a>
+                  <a class="nav-link" href="/users">Użytkownicy</a>
                 </li>
-                @guest
+                
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                  @guest
                 <li class="nav-item login">
-                    <a class="nav-link" href="/login">Zaloguj się</a>
+                    <a class="nav-link" href="/login">Zaloguj</a>
                   </li>
                   
                   <li class="nav-item rejestracja">
-                    <a class="nav-link" href="/register">Zarejestruj się</a>
+                    <a class="nav-link" href="/register">Zarejestruj</a>
                   </li>
                   
                 @endguest
-                </ul>
                 @auth
                     
               
-                <ul class="navbar-nav ml-auto">
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                         {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/users/myProfile">
+                        <a class="dropdown-item black-font" href="/users/myProfile">
                             Mój Profil
                         </a>
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <a class="dropdown-item black-font" href="{{ route('logout') }}"
                            onclick="event.preventDefault();
                                          document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
@@ -105,8 +104,8 @@
                     </div>
                 </li>
                 
+                @endauth
               </ul>
-              @endauth
             </div>
           </nav>
         </header>

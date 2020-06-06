@@ -50,7 +50,7 @@ Route::post('dev/history','DevController@history')->middleware('auth');
 
 Route::get('/users/myProfile', 'ProfileController@myProfile')->middleware('auth');
 Route::get('users/update', 'ProfileController@update')->middleware('auth');
-
+Route::get('/users', 'ProfileController@index');
 Route::post('users/update','ProfileController@save_update')->middleware('auth');
 
 Auth::routes(['verify' => true]);

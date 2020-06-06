@@ -68,16 +68,26 @@ class OfferController extends Controller
             'pending' => $pending_users,
         ]);
     }
-
-    public function store()
+ 
+    
+    public function store(Request $request)
     {
 
         $offer = new Offer();
+       
+        $validated_data = $request->validate([
+            'miasto'=>'required|string',
+            'adres'=>'required|string',
+            'okres_czasu'=>'required|string',
+            'do_kiedy'=>'required|date',
+            'powierzchnia' => 'required|numeric',
+            'cena'=>'required|numeric',
 
+        ]);
         $offer->miasto = request('miasto');
         $offer->adres = request('adres');
-        $offer->okres_czasu = request('czas');
-        $offer->do_kiedy = request('deadline');
+        $offer->okres_czasu = request('okres_czasu');
+        $offer->do_kiedy = request('do_kiedy');
         $offer->powierzchnia = request('powierzchnia');
         if (null != request('jobs')) {
             $offer->jobs = request('jobs');

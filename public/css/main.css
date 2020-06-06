@@ -182,7 +182,7 @@ html, body {
 }
 
 .profile-table td{
-    
+    margin:0 auto;
     padding: 10px;;
     font-size: 0.7rem;
 }
@@ -341,7 +341,7 @@ body{
     padding:20px;
     background-color: #d49d11;
     border-radius: 40px;
-
+    text-align: center;
 }
 
 .col-xs-12.col-sm-8.col-md-6.col-lg-4.col-xl-3{
@@ -681,14 +681,18 @@ textarea {
    
 }
 .uzytkownik2{
-    width: 220px;
+    width: 330px;
+    height:auto;
     margin: 0 auto;
     align-self: center;
     text-align: center;
 }
 .uzytkownik{
+    padding:20px;
     margin: 0 auto;
     text-align: center;
+    border:5px solid #d49d11;
+    box-shadow: 3px 3px black;
 }
 
 .profile-card .card-text{
@@ -697,6 +701,27 @@ textarea {
 
 .profile-x{
     border: 2px solid #f3ecdb;;
+}
+
+#index-img{
+    widows: 50% ;
+    height: auto;
+}
+.main-card{
+    overflow-y:initial !important;
+    text-align: center;
+}
+
+.black-font{
+    color:black !important;
+}
+
+.uwagi{
+    text-align: center;
+}
+
+.users-show{
+    text-align:center;
 }
 
 @media only screen and (min-width: 600px) {
@@ -723,3 +748,4 @@ textarea {
   }
 
  
+  

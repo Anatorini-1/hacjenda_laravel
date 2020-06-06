@@ -13,7 +13,39 @@ use App\Opinion;
 
 class ProfileController extends Controller
 {
-    
+    public function index()
+    {
+        $finished_offers = Finished_offer::all();
+        $users = [];
+        $users_data = [];
+        foreach ($finished_offers as $offer) {
+            if (isset($users[$offer->employee_id])){
+                $users[$offer->employee_id] += 1;
+            }
+            else{
+                $users[$offer->employee_id] = 1;
+            }
+        }
+       arsort($users);
+        foreach ($users as $id => $finished) {
+            $opinions = Opinion::where('user_id',$id)->get();
+            $sum = 0;
+            $count = 0;
+            foreach ($opinions as $opinion) {
+               $sum += $opinion->ocena;
+                   $count++;
+            }
+            $avg = $sum/$count;
+            $users_data[] = [
+                'user' => User::find($id),
+                'finished' =>$finished,
+                'avg' => $avg,
+            ];
+        }
+       
+        return view('users.index',['users' => $users_data]);
+    }
+
     public function myProfile(){
         $user = Auth::user();
         
@@ -104,6 +136,20 @@ class ProfileController extends Controller
     {
         $user = User::FindOrFail($id);
         $data_to_show = [];
+        $offer_data_to_show = [];
+        $finished = Finished_offer::where('employee_id',$user->id)->orderBy('finished_at','desc')->limit(5)->get();
+        foreach ($finished as $offer) {
+           $offer_data = Offer::find($offer->offer_id);
+           $employer = User::find($offer_data->user_id);
+           $opinia = Opinion::where('id',$offer->opinion_id)->get();
+  // var_dump($opinia);
+           $offer_data_to_show[] = [
+               'employer'=>$employer,
+               'offer'=>$offer_data,
+               'finished'=>$offer,
+               'opinion'=>$opinia,
+           ];
+        }
         //Profile data
             $data_to_show['name'] = $user->name;
             $data_to_show['full_name'] = $user->full_name;
@@ -114,7 +160,7 @@ class ProfileController extends Controller
             $data_to_show['finished_offers'] = Finished_offer::where('employee_id',$user->id)->count();
             $data_to_show['active_offers'] = Active_offer::where('employee_id',$user->id)->count();
            
-        return view('users.show', ['data' => $data_to_show]);
+        return view('users.show', ['data' => $data_to_show, 'offers'=>$offer_data_to_show]);
     }
 
     public function update()
