@@ -728,3 +728,7 @@ textarea {
  .page_button{
      text-align: center;
  }
+ .cena-search{
+     width: 150px;
+     box-sizing: border-box;
+ }

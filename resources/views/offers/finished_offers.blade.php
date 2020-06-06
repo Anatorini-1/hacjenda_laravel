@@ -24,7 +24,8 @@
                     <option value="Zcieranie kurzu">
                     <option value="Mycie Podłóg">
                     <option value="Sprzątanie Łazienki">
-                </datalist>
+                </datalist><br/>
+                <input type="number" class="cena-search" placeholder="Cena od (pln)" id="cena_od"><input type="number" class="cena-search" placeholder="Cena do (pln)" id="cena_do"><br/>
             <button class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="Szukaj()">Search</button><br/>
             <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderDesc()" value="Najnowsze">
             <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderAsc()" value="Najstarsze">
