@@ -63,7 +63,7 @@ class OfferPolicy
                 return Response::deny('Już zgłosiłeś się do realizacji tej oferty');
             }
             else{
-                return Response::allow();
+                return Response::allow('Możesz się zgłosić');
             }
            
         }

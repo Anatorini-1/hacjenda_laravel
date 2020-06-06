@@ -103,7 +103,7 @@ class ProfileController extends Controller
             $opinion = Opinion::find($value->opinion_id);
             $employer = User::find($value->employer_id);
             $jobs_done_data[] = [
-                'opinion' => $opinion->opinia ?? '-',
+                'opinion' => $opinion,
                 'employer' => $employer,
                 'offer' => $value,
             ];

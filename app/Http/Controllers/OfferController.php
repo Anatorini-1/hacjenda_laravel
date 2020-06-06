@@ -99,7 +99,7 @@ class OfferController extends Controller
         $offer->cena = request('cena');
 
         $offer->save();
-        return redirect('/offers')->with('msg', "Order Registered");
+        return redirect('/offers')->with('msg', "Utworzono ofertę");
     }
 
     public function destroy($id)
@@ -108,7 +108,7 @@ class OfferController extends Controller
         $access = Gate::inspect('delete', $offer);
         if ($access) {
             $offer->delete();
-            return redirect('/offers');
+            return redirect('/offers')->with('msg','Usunięto ofertę');
         } else {
             return abort(403);
         }
@@ -139,7 +139,7 @@ class OfferController extends Controller
                 $offer->jobs = [];
             }
             $offer->save();
-            return redirect("/offers/show/{$id}");
+            return redirect("/offers/show/{$id}")->with('msg','Zapisano zmiany');
         } else {
             return abort(403);
         }
@@ -377,9 +377,12 @@ class OfferController extends Controller
         
     }
 
-    public function store_review($id)
+    public function store_review($id, Request $request)
     {
         $finished_offer = Finished_offer::find($id);
+        $request->validate([
+            'opinia' => 'required|max:255',
+        ]);
         if(Gate::allows('review', $finished_offer)){
             $opinion = new Opinion();
             $opinion->opinia = request('opinia');

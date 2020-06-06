@@ -3,7 +3,7 @@
 
 
 @section('content')
-<p>{{ session('msg') }}</p>
+<p class='msg'>{{ session('msg') }}</p>
 
 <main>
     <div class="container-fluid">

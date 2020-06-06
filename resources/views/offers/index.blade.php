@@ -12,13 +12,13 @@
 </div>
 @csrf
 <div class="cointainer-fluid">
-    
+    <p class='msg'>{{ session('msg') }}</p>
     
     <main>
         <div class="szukanie">
-            <input class="form-control mr-sm-2 searchs" type="text" placeholder="Miasto" aria-label="Search" onkeypress="logkey()" id='searchs'>
-            <input list="praca" id="praca-list">
-                <datalist id="praca">
+            <input class="form-control mr-sm-2 searchs" type="text" value='{{$_GET['search'] ?? ''}}' placeholder="Miasto" aria-label="Search" onkeypress="logkey()" id='searchs'>
+            <input list="praca" id="praca-list" >
+        <datalist id="praca" >
                     <option value="Mycie Okien">
                     <option value="Mycie Auta">
                     <option value="Odkurzanie">
@@ -26,7 +26,7 @@
                     <option value="Mycie Podłóg">
                     <option value="Sprzątanie Łazienki">
                 </datalist><br/>
-                <input type="number" class="cena-search" placeholder="Cena od (pln)" id="cena_od"><input type="number" class="cena-search" placeholder="Cena do (pln)" id="cena_do"><br/>
+            <input type="number" class="cena-search" value='{{$_GET['cenaod'] ?? ''}}' placeholder="Cena od (pln)" id="cena_od"><input type="number" value='{{$_GET['cenado'] ?? ''}}' class="cena-search" placeholder="Cena do (pln)" id="cena_do"><br/>
             <button class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="Szukaj()">Search</button><br/>
             <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderDesc()" value="Najnowsze">
             <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderAsc()" value="Najstarsze">

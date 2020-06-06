@@ -10,7 +10,7 @@
         @foreach ($users as $user)
         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 col-xl-3 uzytkownik">
             <img src="/img/profile_pictures/default.png" class="uzytkownik2">
-        <p>Nazwa:&nbsp;{{$user['user']->name}}<p>
+        <p>Nazwa:&nbsp;<a href='/users/show/{{$user['user']->id}}'>{{$user['user']->name}}</a><p>
         <p>Ilość wykonanych ofert:&nbsp;{{$user['finished']}}<p>
         <p>Średnia ocena:&nbsp;{{$user['avg']}}<p>
             

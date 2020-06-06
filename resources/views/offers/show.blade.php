@@ -2,7 +2,7 @@
 
 
 @section('content')
-
+<p class='msg'>{{ session('msg') }}</p>
     @php
         
     @endphp
@@ -58,6 +58,12 @@
                     <tr>
                         <td>Stan:</td>
                         <td>
+                            @can('apply', $data)
+                            @php
+                                $res = Gate::inspect('apply',$data);
+                                echo $res->message();
+                            @endphp
+                        @endcan
                         @cannot('apply', $data)
                             @php
                                 $res = Gate::inspect('apply',$data);
@@ -66,6 +72,9 @@
                         @endcannot
                         </td>
                     </tr>
+                    @if ($data->stan != 'zakonczona')
+                        
+                   
                     <tr>
                         <td>Akcje</td>
                         <td>
@@ -113,7 +122,7 @@
                             @endforeach
                         </td>
                     </tr>
-                   
+                   @endif
                 </table>
                
             </div>
