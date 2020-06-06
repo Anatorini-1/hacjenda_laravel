@@ -9,7 +9,7 @@ use App\User;
 class StartController extends Controller
 {
     public function index(){
-        $offers = Offer::orderBy('created_at','desc')->take(3)->get();
+        $offers = Offer::where('stan','otwarta')->orderBy('created_at','desc')->take(3)->get();
         return view('/start/index', ['offers' => $offers]);
     }
 }

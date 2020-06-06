@@ -45,15 +45,22 @@
       
 
       <div id="opinie" class="col-md-12 col-lg-6 profile-x">
-        <h5>Moje wykonane oferty<h5>
-        <div class="profile-card">
-          <div class="card-header">
-            <h5>Featured</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
+        <h5>Oferty wykonywane przez Ciebie<h5>
+            @foreach ($accepted_single_offers as $item)
+            <div class="profile-card">
+                <div class="card-header profile-offer-header">
+                  <h5>Miasto : {{$item['offer']->miasto}}</h5>
+                  <h5>Adres : {{$item['offer']->adres}}</h5>
+                  <h5>Termin : {{$item['offer']->do_kiedy}}</h5>
+                  <h5>Wynagrodzenie : {{$item['offer']->cena}}</h5>
+                  <h5>Pracodawca :<a href='/users/show/{{$item['employer']['id']}}'> {{$item['employer']['name']}}</a></h5>
+                  <h5><a href='/offers/show/{{$item['offer']->id}}'> Szczegóły</a></h5>
+                
+                </div>
+                
+              </div>
+            @endforeach
+      
         
       </div>
 
@@ -62,28 +69,59 @@
     </div>
     <div class="row">
       <div id="opinie" class="col-md-12 col-lg-6 profile-x">
-        <h5>Moje oferty do zrobienia<h5>
-        <div class="profile-card">
-          <div class="card-header">
-            <h5>Featured</h5>
-          </div>
-          <div class="card-body">
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
-        </div>
+        <h5>Oferty Stworzone przez Ciebie<h5>
+            <div class="flex-container">
+                <div class="flex-1">Oczekujące <br />
+                    @foreach ($posted_single_offers as $item)
+                    <div class="profile-card">
+                        <div class="card-header profile-offer-header">
+                          <h5>Miasto : {{$item->miasto}}</h5>
+                          <h5>Adres : {{$item->adres}}</h5>
+                          <h5>Termin : {{$item->do_kiedy}}</h5>
+                          <h5>Wynagrodzenie : {{$item->cena}}</h5>
+                          <h5>&nbsp;</h5>
+                           <h5><a href='/offers/show/{{$item->id}}'> Szczegóły</a></h5>
+                        
+                        </div>
+                        
+                      </div>
+                    @endforeach
+                 </div>
+                <div class="flex-1">W realizacji <br /> 
+                    @foreach ($employed_single_offers as $item)
+                    <div class="profile-card">
+                        <div class="card-header profile-offer-header">
+                          <h5>Miasto : {{$item['offer']->miasto}}</h5>
+                          <h5>Adres : {{$item['offer']->adres}}</h5>
+                          <h5>Termin : {{$item['offer']->do_kiedy}}</h5>
+                          <h5>Wynagrodzenie : {{$item['offer']->cena}}</h5>
+                          <h5>Pracodawca :<a href='/users/show/{{$item['employee']['id']}}'> {{$item['employee']['name']}}</a></h5>
+                          <h5><a href='/offers/show/{{$item['offer']->id}}'> Szczegóły</a></h5>
+                        
+                        </div>
+                        
+                      </div>
+                    @endforeach
+                </div>
+            </div>
+        
        
       </div>
       <div id="opinie" class="col-md-12 col-lg-6 profile-x">
-        <h5>Opinie na mój temat<h5>
+        <h5>Opinie o Tobie<h5>
+            @foreach ($jobs_done as $item)
+                
+           
         <div class="profile-card">
-          <div class="card-header">
-            <h5>Featured</h5>
+          <div class="card-header  profile-offer-header">
+            <h5>Oferta:<a href='/offers/show/{{$item['offer']->id}}'> {{$item['offer']->id}}</a></h5>
+            <h5>Ocena: {{$item['opinion']->opinia ?? '-'}}</h5>
+            <h5>Opinia: {{$item['opinion']->ocena ?? '-'}}</h5>
+               
           </div>
-          <div class="card-body">
-            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          </div>
+         
         </div>
-        
+        @endforeach
       </div>
     </div>
   </main>

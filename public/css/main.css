@@ -724,6 +724,32 @@ textarea {
     text-align:center;
 }
 
+.idk_klasa{
+    width:350px;
+    height:auto;
+}
+
+.latest-offer{
+    background-color: rgb(128, 231, 191);
+    box-shadow: 3px 3px black;
+    padding: 30px;
+    margin-bottom: 30px;
+   
+}
+
+.latest-offer td{
+    padding:5px;
+}
+
+.profile-offer-header{
+    margin-bottom: 30px;
+    box-shadow: 2px 2px black;;
+}
+
+.msg{
+    background-color:rgba(0, 173, 0, 0.602);
+    text-align: center;
+}
 @media only screen and (min-width: 600px) {
     .profile-table td {
       font-size: 1.2rem;

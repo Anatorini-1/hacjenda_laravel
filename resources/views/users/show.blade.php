@@ -7,7 +7,7 @@
         <table class='profile-table'>
             <tr>
                 <td colspan="2" style='text-align:center'> 
-                    <img src="/img/profile_pictures/{{$data['profile_picture']}}"/><br />
+                    <img src="/img/profile_pictures/{{$data['profile_picture']}}" class='idk_klasa'/><br />
                 </td>
             </tr>
             <tr>
@@ -35,10 +35,7 @@
                 <td>{{ $data['active_offers'] }}</td>
             </tr>
             
-           <tr>
-               <td>Opinie</td>
-                <td>AUUUUUUUUUUUUUU</td>
-            </tr>
+           
         </table>
     </div>
 
@@ -48,7 +45,7 @@
             <table>
                 <tr>
                     <td>Pracodawca</td>
-                    <td> {{$offer['employer']->name}}</td>
+                    <td><a href='/users/show/{{$offer['employer']->id}}'> {{$offer['employer']->name}}</a></td>
                 </tr>
                 <tr>
                     <td>Data Ukończenia</td>
@@ -59,9 +56,15 @@
 
                     <td>@php
                         $x = $offer['opinion']->all();
+                           if(sizeof($x)){
                             foreach ($x as $value) {
                                echo($value->ocena);
                             }
+                           }
+                           else{
+                               echo '-';
+                           } ;
+                           
                         @endphp</td>
                 </tr>
             </table>
