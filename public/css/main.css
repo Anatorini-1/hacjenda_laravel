@@ -757,3 +757,12 @@ textarea {
      width: 150px;
      box-sizing: border-box;
  }
+.remember{
+    width: 100px;
+}
+.body-kufa{
+    height: auto;
+}
+.jakie-min-height{
+    min-height: auto !important;
+}

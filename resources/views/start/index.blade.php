@@ -10,7 +10,7 @@
 
 
         <div class="row">
-            <div id="info" class="col-md-6 col-lg-3">
+            <div id="info" class="col-lg-6 col-xl-3">
                 <img src="/img/123.png" alt="" id='index-img' ><br />
                 Utrzymanie czystości w mieszkaniu czy biurze to podstawa – zarówno dla lepszego samopoczucia, jak i
                 efektywności wykonywanych na co dzień zadań. Co jednak w sytuacji, gdy czasu jest niewiele, a o porządek
@@ -21,7 +21,7 @@
 
             </div>
             @foreach ($offers as $offer)
-            <div class=" col-md-6 col-lg-3">
+            <div class=" col-lg-6 col-xl-3">
                 <div class="card" style="width: 18rem;">
                     <img class="card-img-top" style='width:70% !important; height:auto' src="/img/offer_pictures/default.png" alt="Card image cap">
                     <div class="card-body">

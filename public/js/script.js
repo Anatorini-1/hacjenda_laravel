@@ -62,14 +62,16 @@ function Szukaj(miasto){
         }
     if(numer_praca != undefined){
         search = document.querySelector('#searchs').value;
-        window.location.replace(site_url + 'offers/search/1?search=' + search + '&sort=' + sort + '&np=' + numer_praca + '&cenaod=' + cena_od + '&cenado=' + cena_do);
-        }
-    else if(miasto=="" || miasto==undefined){
         if(finished != -1){
-            search = document.querySelector('#searchs').value;
+            window.location.replace(site_url + 'offers/finished/1?search=' + search + '&sort=' + sort + '&np=' + numer_praca + '&cenaod=' + cena_od + '&cenado=' + cena_do);
+        }else{
+            window.location.replace(site_url + 'offers/search/1?search=' + search + '&sort=' + sort + '&np=' + numer_praca + '&cenaod=' + cena_od + '&cenado=' + cena_do);
+        }
+    }else if(miasto=="" || miasto==undefined){
+        search = document.querySelector('#searchs').value;
+        if(finished != -1){
             window.location.replace(site_url + 'offers/finished/1?search=' + search + '&sort=' + sort + '&cenaod=' + cena_od + '&cenado=' + cena_do);
         }else{
-            search = document.querySelector('#searchs').value;
             window.location.replace(site_url + 'offers/search/1?search=' + search + '&sort=' + sort + '&cenaod=' + cena_od + '&cenado=' + cena_do);
             }
         }
