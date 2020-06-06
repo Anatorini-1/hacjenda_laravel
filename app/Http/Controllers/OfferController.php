@@ -311,6 +311,10 @@ class OfferController extends Controller
             $sort = 'desc';
         $cenaod = request('cenaod');
         $cenado = request('cenado');
+        if(is_string($cenaod)==true)
+            $cenaod = null;
+            if(is_string($cenado)==true)
+            $cenado = null;
         if($cenaod == null)
             $cenaod = 0;
         if($cenado == null)
