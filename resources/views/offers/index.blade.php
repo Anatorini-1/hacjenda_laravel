@@ -11,19 +11,41 @@
     
 </div>
 @csrf
-<input type="text" name="search" id='searchtxt' placeholder="Miasto" onkeypress="logkey()"><br />
-<input type="button" onclick="OrderDesc()" value="Najnowsze">
-<input type="button" onclick="OrderAsc()" value="Najstarsze">
-<br />
-<input type="button" onclick="Szukaj()" value="Szukaj">
 <div class="cointainer-fluid">
-
-  
+    
+    
     <main>
-      <div class="szukanie">
-        <input class="form-control mr-sm-2 searchs" type="text" placeholder="Search" aria-label="Search">
-        <button class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="submit">Search</button></div>
-        <p class="zmiana"><a href="#"><<</a><a href="#"> <</a> 1 <a href="#">></a><a href="#"> >></a> </p>
+        <div class="szukanie">
+            <input class="form-control mr-sm-2 searchs" type="text" placeholder="Miasto" aria-label="Search" onkeypress="logkey()" id='searchs'>
+            <input list="praca" id="praca-list">
+                <datalist id="praca">
+                    <option value="Mycie Okien">
+                    <option value="Mycie Auta">
+                    <option value="Odkurzanie">
+                    <option value="Zcieranie kurzu">
+                    <option value="Mycie Podłóg">
+                    <option value="Sprzątanie Łazienki">
+                </datalist><br/>
+                <input type="number" class="cena-search" placeholder="Cena od (pln)" id="cena_od"><input type="number" class="cena-search" placeholder="Cena do (pln)" id="cena_do"><br/>
+            <button class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="Szukaj()">Search</button><br/>
+            <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderDesc()" value="Najnowsze">
+            <input class="btn btn-mdb-color btn-rounded btn-sm my-0 waves-effect waves-light" type="button" onclick="OrderAsc()" value="Najstarsze">
+        </div>
+        <div class="row">
+            <div class="col-md-12 page_button">
+                <fieldset id="offer_buttons_fieldset">
+                    <a href="/offers/{{$beforesearch}}1{{$activesearch}}"> &lt;&lt; </a>
+    
+                    @if ($activePage > 1)
+                <a href="/offers/{{$beforesearch}}{{$activePage-1}}{{$activesearch}}">&lt;</a>
+                    @endif
+                    {{ $activePage }}
+                    @if ($activePage < $pageCount) <a href="/offers/{{$beforesearch}}{{$activePage+1}}{{$activesearch}}">&gt;</a>
+                        @endif
+                        <a href="/offers/{{$beforesearch}}{{$pageCount}}{{$activesearch}}"> &gt;&gt; </a>
+                </fieldset>
+            </div>
+        </div>
  
       <div class="row">
           @foreach ($data as $item)
@@ -59,7 +81,21 @@
         @endforeach
       
       </div>
-      <p class="zmiana"><a href="#"><<</a><a href="#"> <</a> 1 <a href="#">></a><a href="#"> >></a> </p>
+      <div class="row">
+        <div class="col-md-12 page_button">
+            <fieldset id="offer_buttons_fieldset">
+                <a href="/offers/{{$beforesearch}}1{{$activesearch}}"> &lt;&lt; </a>
+
+                @if ($activePage > 1)
+                <a href="/offers/{{$beforesearch}}{{$activePage-1}}{{$activesearch}}">&lt;</a>
+                @endif
+                {{ $activePage }}
+                @if ($activePage < $pageCount) <a href="/offers/{{$activePage+1}}{{$activesearch}}">&gt;</a>
+                    @endif
+            <a href="/offers/{{$beforesearch}}{{$pageCount}}{{$activesearch}}"> &gt;&gt; </a>
+            </fieldset>
+        </div>
+    </div>
   </main>
   </div>
 <!--
@@ -111,21 +147,7 @@
         </div>
         @endforeach
     </div>
-    <div class="row">
-        <div class="col-md-12">
-            <fieldset id="offer_buttons_fieldset">
-                <a href="/offers/{{$beforesearch}}1{{$activesearch}}"> &lt;&lt; </a>
-
-                @if ($activePage > 1)
-                <a href="/offers/{{$beforesearch}}{{$activePage-1}}{{$activesearch}}">&lt;</a>
-                @endif
-                {{ $activePage }}
-                @if ($activePage < $pageCount) <a href="/offers/{{$activePage+1}}{{$activesearch}}">&gt;</a>
-                    @endif
-            <a href="/offers/{{$beforesearch}}{{$pageCount}}{{$activesearch}}"> &gt;&gt; </a>
-            </fieldset>
-        </div>
-    </div>
+    
     <br />
 
 -->
