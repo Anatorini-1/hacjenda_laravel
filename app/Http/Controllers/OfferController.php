@@ -328,7 +328,7 @@ class OfferController extends Controller
         if($cenaod == null)
             $cenaod = 0;
         if($cenado == null)
-            $cenado = 99899;
+            $cenado = 99999;
         if ($search == null && $praca == null) {
             $offers = Offer::where('stan', 'zakonczona')->whereRaw("cena >= $cenaod")->whereRaw("cena <= $cenado")->orderBy('created_at', $sort)->get();
         }else if($praca == null){

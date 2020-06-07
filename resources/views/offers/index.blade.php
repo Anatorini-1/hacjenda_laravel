@@ -85,14 +85,14 @@
         <div class="col-md-12 page_button">
             <fieldset id="offer_buttons_fieldset">
                 <a href="/offers/{{$beforesearch}}1{{$activesearch}}"> &lt;&lt; </a>
-
+    
                 @if ($activePage > 1)
-                <a href="/offers/{{$beforesearch}}{{$activePage-1}}{{$activesearch}}">&lt;</a>
+            <a href="/offers/{{$beforesearch}}{{$activePage-1}}{{$activesearch}}">&lt;</a>
                 @endif
                 {{ $activePage }}
-                @if ($activePage < $pageCount) <a href="/offers/{{$activePage+1}}{{$activesearch}}">&gt;</a>
+                @if ($activePage < $pageCount) <a href="/offers/{{$beforesearch}}{{$activePage+1}}{{$activesearch}}">&gt;</a>
                     @endif
-            <a href="/offers/{{$beforesearch}}{{$pageCount}}{{$activesearch}}"> &gt;&gt; </a>
+                    <a href="/offers/{{$beforesearch}}{{$pageCount}}{{$activesearch}}"> &gt;&gt; </a>
             </fieldset>
         </div>
     </div>
